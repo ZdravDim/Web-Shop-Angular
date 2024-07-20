@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+li a:hover {
+    cursor: pointer;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    box-shadow: none;
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
