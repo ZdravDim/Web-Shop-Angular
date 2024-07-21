@@ -11,5 +11,14 @@ li a:hover {
     border-color: inherit;
     box-shadow: none;
 }
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+
+body {
+    height: 100vh;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
