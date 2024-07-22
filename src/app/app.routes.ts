@@ -5,15 +5,18 @@ import { AboutComponent } from './pages/about/about.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UserGuard } from './user.guard';
-import { LoginComponent } from './pages/login-signup/login/login.component';
-import { SignupComponent } from './pages/login-signup/signup/signup.component';
+import { LoginComponent } from './login-signup/login/login.component';
+import { SignupComponent } from './login-signup/signup/signup.component';
+import { WebsiteComponent } from './website/website.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'contact', component: ContactComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'cart', component: CartComponent },
-    { path: 'profile', component: ProfileComponent, canActivate: [UserGuard] },
     { path: 'login', component: LoginComponent },
-    { path: 'signup', component: SignupComponent }
+    { path: 'signup', component: SignupComponent },
+    { path: '', component: WebsiteComponent, children: [
+        { path: '', component: HomeComponent },
+        { path: 'contact', component: ContactComponent },
+        { path: 'about', component: AboutComponent },
+        { path: 'cart', component: CartComponent },
+        { path: 'profile', component: ProfileComponent, canActivate: [UserGuard] }
+    ] }
 ];

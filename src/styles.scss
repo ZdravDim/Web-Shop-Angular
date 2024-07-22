@@ -22,3 +22,15 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+app-root {
+    display: block;
+    height: 100%;
+}
+
+app-login, app-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
