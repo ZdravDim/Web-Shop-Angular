@@ -1,15 +1,16 @@
 
 <div class="mx-auto form-container text-center py-5">
     <h4 class="text-center my-4 py-3 fw-bold">Log In</h4>
-    <form>
+    <form (ngSubmit)="onLogin()">
         <div class="my-3 mx-auto form-group">
-            <input type="email" class="form-control" placeholder="Enter your email address">
+            <input type="email" class="form-control" placeholder="Enter your email address" id="email" [(ngModel)]="email" name="email" required>
         </div> 
         <div class="mb-4 mx-auto form-group">
-            <input type="password" class="form-control" placeholder="Password">
-        </div>    
+            <input type="password" class="form-control" placeholder="Password" id="password" [(ngModel)]="password" name="password" required>
+        </div>
+        <p *ngIf="failedToLogin" class="text-danger">LogIn Unsuccessful!</p>
         <div class="container text-center my-2">
-            <button class="btn btn-outline-dark">Submit</button>
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
         </div>
         <p class="text-under-button mt-3 d-inline">Don't have an account? </p><a class="text-under-button link-primary" routerLink="/signup" routerLinkActive="active">Sign up!</a>
     </form>

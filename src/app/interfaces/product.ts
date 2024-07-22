@@ -1,6 +1,7 @@
-import { Category, Gender, Size } from "../Enums/product";
+import { Category, Gender, Size } from "../enums/product";
+import { ReviewInterface } from "./revirew";
 
-export interface Product {
+export interface ProductInterface {
     id: number;
     name: string;
     price: number;
@@ -8,6 +9,7 @@ export interface Product {
     size: Size;
     gender: Gender;
     manifacturer: string;
+    reviews: ReviewInterface[];
     createdAt: Date;
-    updatedAt: Date;
+    updatedAt?: Date;
 }

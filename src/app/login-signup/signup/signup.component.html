@@ -1,23 +1,30 @@
 
 <div class="mx-auto form-container text-center py-5">
     <h4 class="text-center my-4 py-3 fw-bold">Register to Web Shop</h4>
-    <form>
+    <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
         <div class="my-3 mx-auto form-group">
-            <input type="text" class="form-control" placeholder="First Name">
+            <input type="text" class="form-control" placeholder="First Name" id="userData.firstName" [(ngModel)]="userData.firstname" name="userData.firstName" required>
         </div> 
         <div class="my-3 mx-auto form-group">
-            <input type="text" class="form-control" placeholder="Last Name">
+            <input type="text" class="form-control" placeholder="Last Name" id="userData.lastname" [(ngModel)]="userData.lastname" name="userData.lastname" required>
         </div> 
         <div class="my-3 mx-auto form-group">
-            <input type="email" class="form-control" placeholder="Email address">
+            <input type="text" class="form-control" placeholder="Address" id="userData.address" [(ngModel)]="userData.address" name="userData.address" required>
+        </div> 
+        <div class="my-3 mx-auto form-group">
+            <input type="email" class="form-control" placeholder="Email address" id="userData.email" [(ngModel)]="userData.email" name="userData.email" required>
         </div> 
         <div class="mb-4 mx-auto form-group">
-            <input type="password" class="form-control" placeholder="Password">
-        </div>    <div class="mb-4 mx-auto form-group">
-            <input type="password" class="form-control" placeholder="Confirm password">
-        </div>   
+            <input type="password" class="form-control" placeholder="Password" id="userData.password" [(ngModel)]="userData.password" name="userData.password" required>
+        </div>
+        <div class="mb-4 mx-auto form-group">
+            <input type="password" class="form-control" placeholder="Confirm password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+        </div>
+        <p *ngIf="failedToSignup" class="text-danger">SignUp Unsuccessful!</p>
+        <p *ngIf="someFieldsAreEmpty" class="text-danger">PLease fill every field.</p>
+        <p *ngIf="passwordNotMatching" class="text-danger">Passwords Not Matching!</p>
         <div class="container text-center my-4">
-            <button class="btn btn-outline-dark">Submit</button>
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
         </div>
         <p class="signup-option">Already have an account? <a class="link-primary" routerLink="/login" routerLinkActive="active">Log in!</a></p>
     </form>
