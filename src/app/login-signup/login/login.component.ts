@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, NgForm } from '@angular/forms'
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 
@@ -14,13 +14,21 @@ import { CommonModule } from '@angular/common';
 
 export class LoginComponent {
 
+  someFieldsAreEmpty: boolean = false;
   failedToLogin: boolean = false;
   email: string = '';
   password: string = '';
 
   constructor(private userService: UserService, private router: Router) {}
 
-  onLogin(): void {
+  onLogin(form: NgForm): void {
+    this.someFieldsAreEmpty = this.failedToLogin = false;
+
+    if (form.invalid) {
+      this.someFieldsAreEmpty = true;
+      return;
+    }
+
     if (this.userService.login(this.email, this.password)) {
       this.router.navigate(['']);
     }

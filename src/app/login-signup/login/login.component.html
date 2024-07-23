@@ -8,7 +8,7 @@
 <div class="mx-auto form-container text-center py-5">
 
     <h4 class="text-center my-4 py-3 fw-bold">Log In</h4>
-    <form (ngSubmit)="onLogin()">
+    <form #logInForm="ngForm" (ngSubmit)="onLogin(logInForm)">
         <div class="my-3 mx-auto form-group">
             <input type="email" class="form-control" placeholder="Enter your email address" id="email" [(ngModel)]="email" name="email" required>
         </div> 
@@ -16,6 +16,7 @@
             <input type="password" class="form-control" placeholder="Password" id="password" [(ngModel)]="password" name="password" required>
         </div>
         <p *ngIf="failedToLogin" class="text-danger">LogIn Unsuccessful!</p>
+        <p *ngIf="someFieldsAreEmpty" class="text-danger">Please fill every field.</p>
         <div class="container text-center my-2">
             <button type="submit" class="btn btn-outline-dark">Submit</button>
         </div>
