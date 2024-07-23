@@ -6,10 +6,16 @@ export interface ProductInterface {
     name: string;
     price: number;
     category: Category;
-    size: Size;
     gender: Gender;
     manifacturer: string;
     reviews: ReviewInterface[];
+    rating: number;
     createdAt: Date;
     updatedAt?: Date;
+}
+
+export interface ProductStorageInterface {
+    product: ProductInterface,
+    size: Size,
+    count: number
 }

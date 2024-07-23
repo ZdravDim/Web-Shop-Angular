@@ -16,7 +16,7 @@ export const routes: Routes = [
         { path: '', component: HomeComponent },
         { path: 'contact', component: ContactComponent },
         { path: 'about', component: AboutComponent },
-        { path: 'cart', component: CartComponent },
+        { path: 'cart', component: CartComponent, canActivate: [UserGuard] },
         { path: 'profile', component: ProfileComponent, canActivate: [UserGuard] }
     ] }
 ];

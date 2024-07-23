@@ -1,5 +1,6 @@
 import { ProductInterface } from "./interfaces/product";
 import { UserInterface } from "./interfaces/user"
+import { StorageInterface } from "./interfaces/storage"
 
 export const userLoggedIn: boolean = false;
 export const currentUser: UserInterface = {
@@ -19,6 +20,11 @@ export const currentUser: UserInterface = {
 export const userList: UserInterface[] = [];
 export const productList: ProductInterface[] = [];
 export const manifacturerList: string[] = [];
+export const storage: StorageInterface = {
+    products: [
+        //TODO: ubaci bar 10 proizvoda
+    ]
+}
 
 export let orderCnt: number = 0;
 export let productCnt: number = 0;

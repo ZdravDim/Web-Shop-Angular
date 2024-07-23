@@ -14,6 +14,7 @@ export class UserService implements UserServiceInterface {
     for (const user of userList) {
       if (userData.email === user.email) return false;
     }
+    //TODO: dodeli mu korpu iz currentUser, pa onda currentUser postane on
     userList.push(userData);
     return true;
   }
@@ -21,7 +22,11 @@ export class UserService implements UserServiceInterface {
   login(email: string, password: string): boolean {
     for (const user of userList) {
       if (email === user.email) {
-        if (password === user.password) return true;
+        if (password === user.password) {
+            //TODO: korpu iz currentUser prekopiraj u ulogovanog korisnika
+            //i currentUser da postane taj korisnik
+          return true;
+        }
         return false;
       }
     }
