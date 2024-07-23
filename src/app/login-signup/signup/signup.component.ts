@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { UserInterface, UserServiceInterface } from '../../interfaces/user';
+import { UserInterface } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -21,6 +21,7 @@ export class SignupComponent {
   someFieldsAreEmpty: boolean = false;
   passwordNotMatching: boolean = false;
   confirmPassword: string = '';
+  
   userData: UserInterface = {
     firstname: '',
     lastname: '',
@@ -29,7 +30,13 @@ export class SignupComponent {
     phone: '',
     password: '',
     createdAt: new Date(),
-    updatedAt: undefined
+    updatedAt: undefined,
+    orders: [],
+
+    cart: {
+      products: [],
+      price: 0
+    }
   }
 
   onSignup(form: NgForm): void {

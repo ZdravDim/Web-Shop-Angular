@@ -1,5 +1,5 @@
 import { Category, Gender, Size } from "../enums/product";
-import { ReviewInterface } from "./revirew";
+import { ReviewInterface } from "./review";
 
 export interface ProductInterface {
     id: number;

@@ -1,3 +1,6 @@
+import { CartInterface } from "./cart";
+import { OrderInterface } from "./order";
+
 export interface UserInterface {
     firstname: string;
     lastname: string;
@@ -7,6 +10,8 @@ export interface UserInterface {
     password: string;
     createdAt: Date;
     updatedAt?: Date;
+    orders: OrderInterface[];
+    cart: CartInterface;
 }
 
 export interface UserServiceInterface {
