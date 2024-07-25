@@ -1,2 +1,59 @@
-<p>profile works!</p>
 <!-- TODO: napravi profil i obavezno logout dugme, pri logout-u sredi currentUser, i isprazni korpu -->
+
+    <div class="container-fluid px-0">
+      <div class="row g-0">
+  
+        <div class="col-lg-6 fs-6 px-5">
+          
+
+            <div class="m-3">
+              
+              <h2 class="mb-5 fw-bold">PROFILE INFO</h2>
+
+              <table class="table my-5 w-75">
+
+                <tbody>
+                    <tr>
+                        <td>FIRST NAME</td>
+                        <td>{{user.firstname}}</td>
+                    </tr>
+                    <tr>
+                      <td>LAST NAME</td>
+                      <td>{{user.lastname}}</td>
+                  </tr>
+                    <tr>
+                        <td>EMAIL</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>PHONE NUMBER</td>
+                        <td>{{user.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>ADDRESS</td>
+                        <td>{{user.address}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <button mat-icon-button color="primary" (click)="updateInfo()" style="vertical-align: middle;">
+              <mat-icon style="vertical-align:top;">edit</mat-icon>
+            </button>
+            <p class="d-inline-flex">Update information</p><br>
+
+            <button mat-icon-button color="primary" (click)="logOut()" style="vertical-align: middle;">
+              <mat-icon style="vertical-align:top;">logout</mat-icon>
+            </button>
+            <p class="d-inline-flex">Log out</p><br>
+          
+            
+        </div>
+        <div class="col-lg-6 vh-100">
+
+        </div>
+        
+  
+      </div>
+    </div>
+  
