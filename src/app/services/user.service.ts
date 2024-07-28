@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserInterface, UserServiceInterface } from '../interfaces/user';
 import { ProductInterface } from '../interfaces/product';
+import { Size } from '../enums/product';
 
 @Injectable({
   providedIn: 'root'
@@ -28,15 +29,15 @@ export class UserService implements UserServiceInterface {
   };
 
   private userList: UserInterface[] = [{
-    firstname: "Dimitrije ",
+    firstname: "Dimitrije",
     lastname: "Zdravkovic",
     email: "dz.com",
-    address: "aaa bbb 2134",
+    address: "Some Address 123",
     cart: {
         products: [],
         price: 0
     },
-    phone: "1235834",
+    phone: "+3812345678",
     password: "123",
     createdAt: new Date(),
     orders: []
@@ -105,13 +106,11 @@ export class UserService implements UserServiceInterface {
     };
   }
 
-  // TODO: da li se uklanja sa stanja pre porudzbine ?
-
-  addToCart(product: ProductInterface): void {
+  addToCart(product: ProductInterface, size: Size): void {
     this.currentUser.cart.products.push(product);
     this.currentUser.cart.price += product.price;
+    // this.storageService.reserveProduct(product.id, size);
   }
-
 
   removeFromCart(product: ProductInterface): boolean {
     const index = this.currentUser.cart.products.findIndex(p => p.id === product.id);
@@ -119,15 +118,16 @@ export class UserService implements UserServiceInterface {
     if (index !== -1) {
       this.currentUser.cart.products.splice(index, 1);
       this.currentUser.cart.price -= product.price;
+      // return product to storage, needs size attribute 
       return true;
     }
-
     return false;
   }
 
   emptyCart(): void {
-    this.currentUser.cart.products = [];
+    for (const product of this.currentUser.cart.products) {
+      this.removeFromCart(product); 
+    }
     this.currentUser.cart.price = 0;
   }
-
 }

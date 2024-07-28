@@ -1,7 +1,7 @@
 import { ProductInterface } from "./product";
 
 export interface CartInterface {
-    products: ProductInterface[];
+    products: ProductInterface[]; 
     price: number;
 }
 

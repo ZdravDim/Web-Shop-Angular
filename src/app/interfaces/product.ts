@@ -16,8 +16,9 @@ export interface ProductInterface {
 
 export interface ProductStorageInterface {
     product: ProductInterface,
-    storage: [
-        size: Size,
-        count: number
-    ]
+    // storage: [
+    //     size: Size,
+    //     count: number
+    // ] []
+    storage: number[]
 }

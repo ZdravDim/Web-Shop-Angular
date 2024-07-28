@@ -1,3 +1,36 @@
 tr {
     border-bottom: 2px solid #ccc;
 }
+
+.form-group {
+    width: 50%;
+    text-align: left;
+    color: rgb(81, 81, 81);
+    font-size: 1rem;
+
+    input {
+        border-bottom: 2px solid #ccc; 
+
+        &:focus {
+        border-bottom: 2px solid darkgray; 
+        }
+    }
+}
+
+input {
+    border: none;            
+    border-radius: 0%;
+    background-color: white;
+    &:focus {
+        outline: none;
+    }
+}
+
+.form-control::placeholder {
+    font-size: 0.75rem; 
+    color: #888;
+}
+
+.mat-icon-button {
+    margin-bottom: 2px;
+}

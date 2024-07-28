@@ -1,59 +1,70 @@
-<!-- TODO: napravi profil i obavezno logout dugme, pri logout-u sredi currentUser, i isprazni korpu -->
+<div class="container-fluid d-flex px-0">
+  <div class="sidebar d-flex flex-column p-5">
+    <button class="btn btn-light option" (click)="showSection('profile')">My Profile</button><br>
+    <button class="btn btn-light option" (click)="showSection('resetPassword')">Reset Password</button>
+  </div>
 
-    <div class="container-fluid px-0">
-      <div class="row g-0">
-  
-        <div class="col-lg-6 fs-6 px-5">
-          
+  <div class="content flex-grow-1 p-5">
+    <div *ngIf="currentSection === 'profile'">
+      <h2 class="mb-5 fw-bold">PROFILE INFO</h2>
+      <table class="table mt-5 w-75">
+        <tbody>
+          <tr>
+            <td>FIRST NAME</td>
+            <td><input placeholder="{{user.firstname}}" [disabled]="!updatesEnabled"></td>
+          </tr>
+          <tr>
+            <td>LAST NAME</td>
+            <td><input placeholder="{{user.lastname}}" [disabled]="!updatesEnabled"></td>
+          </tr>
+          <tr>
+            <td>EMAIL</td>
+            <td><input placeholder="{{user.email}}" [disabled]="!updatesEnabled"></td>
+          </tr>
+          <tr>
+            <td>PHONE NUMBER</td>
+            <td><input placeholder="{{user.phone}}" [disabled]="!updatesEnabled"></td>
+          </tr>
+          <tr>
+            <td>ADDRESS</td>
+            <td><input placeholder="{{user.address}}" [disabled]="!updatesEnabled"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-start" *ngIf="updatesEnabled">
+        <button class="btn btn-outline-danger me-2" (click)="cancelUpdate()">Cancel</button>
+        <button class="btn btn-outline-dark" (click)="applyUpdates()" type="submit">Apply changes</button>
+      </div>
+      <div *ngIf="updatesEnabled === false">
+        <button mat-icon-button color="primary" (click)="enableUpdate()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <p class="d-inline-flex mb-1">Update information</p><br>
+      </div>
+      
+      <button mat-icon-button color="primary" (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+      </button>
+      <p class="d-inline-flex">Log out</p><br>
+    </div>
 
-            <div class="m-3">
-              
-              <h2 class="mb-5 fw-bold">PROFILE INFO</h2>
+    <div *ngIf="currentSection === 'resetPassword'" class="w-100 align-items-start"> 
+      <h2 class="mb-5 fw-bold">RESET PASSWORD</h2>
+      <div class="mb-4 form-group">
+        <input type="password" class="form-control" placeholder="OLD PASSWORD" id="oldPassword" [(ngModel)]="oldPassword" name="oldPassword" required>
+      </div>
+      <div class="mb-4 form-group">
+        <input type="password" class="form-control" placeholder="NEW PASSWORD" id="newPassword" [(ngModel)]="newPassword" name="newPassword" required>
+      </div>
+      
+      <p *ngIf="someFieldsAreEmpty" class="text-danger">Please fill every field.</p>
+      <p *ngIf="passwordNotMatching" class="text-danger">Passwords not matching!</p>
+      <p *ngIf="passwordChanged" class="text-success">Passwords successfully changed!</p>
 
-              <table class="table my-5 w-75">
-
-                <tbody>
-                    <tr>
-                        <td>FIRST NAME</td>
-                        <td>{{user.firstname}}</td>
-                    </tr>
-                    <tr>
-                      <td>LAST NAME</td>
-                      <td>{{user.lastname}}</td>
-                  </tr>
-                    <tr>
-                        <td>EMAIL</td>
-                        <td>{{user.email}}</td>
-                    </tr>
-                    <tr>
-                        <td>PHONE NUMBER</td>
-                        <td>{{user.phone}}</td>
-                    </tr>
-                    <tr>
-                        <td>ADDRESS</td>
-                        <td>{{user.address}}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-
-            <button mat-icon-button color="primary" (click)="updateInfo()" style="vertical-align: middle;">
-              <mat-icon style="vertical-align:top;">edit</mat-icon>
-            </button>
-            <p class="d-inline-flex">Update information</p><br>
-
-            <button mat-icon-button color="primary" (click)="logOut()" style="vertical-align: middle;">
-              <mat-icon style="vertical-align:top;">logout</mat-icon>
-            </button>
-            <p class="d-inline-flex">Log out</p><br>
-          
-            
-        </div>
-        <div class="col-lg-6 vh-100">
-
-        </div>
-        
-  
+      <div class="d-flex justify-content-start">
+        <button class="btn btn-outline-danger me-2" (click)="cancel()">Cancel</button>
+        <button class="btn btn-outline-dark" (click)="resetPassword()" type="submit">Confirm</button>
       </div>
     </div>
-  
+  </div>
+</div>

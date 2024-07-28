@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { StorageService } from './services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,13 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'Web-Shop-Angular';
+export class AppComponent implements OnInit {
+
+  constructor(private storageService: StorageService) {}
+
+  title = 'Web-Shop-Angular'; 
+  
+  ngOnInit(): void {
+    this.storageService.fillStorage();
+  }
 }
