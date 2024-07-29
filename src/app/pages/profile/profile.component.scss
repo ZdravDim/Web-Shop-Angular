@@ -2,11 +2,16 @@ tr {
     border-bottom: 2px solid #ccc;
 }
 
+td {
+    min-width: 160px;
+}
+
 .form-group {
-    width: 50%;
+    width: 90%;
+    max-width: 350px;
     text-align: left;
     color: rgb(81, 81, 81);
-    font-size: 1rem;
+    font-size: 10rem;
 
     input {
         border-bottom: 2px solid #ccc; 
@@ -17,9 +22,20 @@ tr {
     }
 }
 
+@media screen and (max-width: 800px) {
+    .form-group {
+        width: 60%;
+    }
+}
+
+input:disabled {
+    color: #000000;
+}
+
 input {
     border: none;            
     border-radius: 0%;
+    color: #0d6efd;
     background-color: white;
     &:focus {
         outline: none;
@@ -31,6 +47,6 @@ input {
     color: #888;
 }
 
-.mat-icon-button {
-    margin-bottom: 2px;
+.max-width-400 {
+    max-width: 400px;
 }

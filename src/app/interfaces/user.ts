@@ -17,5 +17,5 @@ export interface UserInterface {
 export interface UserServiceInterface {
     signup(userData: UserInterface): boolean;
     login(email: string, password: string): boolean;
-    changeData(userData: UserInterface): boolean;
+    updateUser(email: string, userData: UserInterface): boolean;
 }

@@ -9,9 +9,11 @@ import { Size } from '../enums/product';
 
 export class UserService implements UserServiceInterface {
 
-  constructor() {}
+  constructor() {
+    this.currentUser = this.userList[0]; // TODO: remove
+  }
 
-  private userLoggedIn: boolean = false;
+  private userLoggedIn: boolean = true; // TODO: change to false
   
   private currentUser: UserInterface = {
     firstname: "",
@@ -66,9 +68,9 @@ export class UserService implements UserServiceInterface {
     return false;
   }
 
-  changeData(userData: UserInterface): boolean {
+  updateUser(email: string, userData: UserInterface): boolean {
     for (const user of this.userList) {
-      if (userData.email === user.email) {
+      if (userData.email === email) {
         Object.assign(user, userData);
         return true;
       }
