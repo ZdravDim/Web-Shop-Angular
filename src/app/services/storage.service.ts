@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageInterface, StorageServiceInterface } from '../interfaces/storage';
 import { Category, Gender, Size } from '../enums/product';
+import { ProductInterface, ProductStorageInterface } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -94,6 +95,10 @@ export class StorageService implements StorageServiceInterface {
       this.createNewProduct("SHORT SLEEVE SHIRT", 3490, Category.CASUAL, Gender.MALE, "NIKE");
       this.createNewProduct("RUNNING SET M", 5990, Category.CASUAL, Gender.MALE, "NIKE");
       this.createNewProduct("RUNNING SET W", 5990, Category.CASUAL, Gender.FEMALE, "NIKE");
+  }
+
+  getAllProducts(): ProductStorageInterface[] {
+    return this.storage.products;
   }
   
 }

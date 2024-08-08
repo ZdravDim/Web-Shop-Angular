@@ -1,1 +1,11 @@
 home works!
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        <div *ngFor="let item of products" class="col py-3">
+            <div class="border border-secondary p-3 text-center">
+                <p>{{item.product.name}}</p>
+                <p>{{item.product.price}}</p>
+            </div>
+        </div>
+    </div>
+</div>
