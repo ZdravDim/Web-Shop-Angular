@@ -8,8 +8,9 @@ export interface ProductInterface {
     category: Category;
     gender: Gender;
     manifacturer: string;
+    imagePath: string;
     reviews: ReviewInterface[];
-    rating: number;
+    rating?: number;
     createdAt: Date;
     updatedAt?: Date;
 }

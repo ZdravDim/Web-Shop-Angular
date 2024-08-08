@@ -15,20 +15,7 @@ export class UserService implements UserServiceInterface {
 
   private userLoggedIn: boolean = true; // TODO: change to false
   
-  private currentUser: UserInterface = {
-    firstname: "",
-    lastname: "",
-    email: "",
-    address: "",
-    cart: {
-        products: [],
-        price: 0
-    },
-    phone: "",
-    password: "",
-    createdAt: new Date(),
-    orders: []
-  };
+  private currentUser?: UserInterface = undefined;
 
   private userList: UserInterface[] = [{
     firstname: "Dimitrije",
@@ -57,7 +44,7 @@ export class UserService implements UserServiceInterface {
     for (const user of this.userList) {
       if (email === user.email) {
         if (password === user.password) {
-          user.cart = this.currentUser.cart;
+          user.cart = this.currentUser!.cart;
           this.currentUser = user;
           this.userLoggedIn = true;
           return true;
@@ -79,7 +66,7 @@ export class UserService implements UserServiceInterface {
   }
 
   getCurrentUser(): UserInterface {
-    return this.currentUser;
+    return this.currentUser!;
   }
 
   getUserLoggedIn(): boolean {
@@ -87,39 +74,22 @@ export class UserService implements UserServiceInterface {
   }
 
   logOut(): void {
-    this.clearCurrentUser();
+    this.currentUser = undefined;
     this.userLoggedIn = false;
   }
 
-  private clearCurrentUser(): void {
-    this.currentUser = {
-      firstname: "",
-      lastname: "",
-      email: "",
-      address: "",
-      cart: {
-          products: [],
-          price: 0
-      },
-      phone: "",
-      password: "",
-      createdAt: new Date(),
-      orders: []
-    };
-  }
-
   addToCart(product: ProductInterface, size: Size): void {
-    this.currentUser.cart.products.push(product);
-    this.currentUser.cart.price += product.price;
+    this.currentUser!.cart.products.push(product);
+    this.currentUser!.cart.price += product.price;
     // this.storageService.reserveProduct(product.id, size);
   }
 
   removeFromCart(product: ProductInterface): boolean {
-    const index = this.currentUser.cart.products.findIndex(p => p.id === product.id);
+    const index = this.currentUser!.cart.products.findIndex(p => p.id === product.id);
 
     if (index !== -1) {
-      this.currentUser.cart.products.splice(index, 1);
-      this.currentUser.cart.price -= product.price;
+      this.currentUser!.cart.products.splice(index, 1);
+      this.currentUser!.cart.price -= product.price;
       // return product to storage, needs size attribute 
       return true;
     }
@@ -127,9 +97,9 @@ export class UserService implements UserServiceInterface {
   }
 
   emptyCart(): void {
-    for (const product of this.currentUser.cart.products) {
+    for (const product of this.currentUser!.cart.products) {
       this.removeFromCart(product); 
     }
-    this.currentUser.cart.price = 0;
+    this.currentUser!.cart.price = 0;
   }
 }

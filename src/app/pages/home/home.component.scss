@@ -1,0 +1,14 @@
+a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+        color: rgb(65, 65, 65);
+    }
+}
+
+.zoom {
+    transition: transform 0.05s ease-in-out;
+    &:hover {
+        transform: scale(1.02);
+    }
+}

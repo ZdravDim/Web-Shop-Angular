@@ -1,11 +1,11 @@
-home works!
 <div class="container-fluid">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-        <div *ngFor="let item of products" class="col py-3">
-            <div class="border border-secondary p-3 text-center">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        <div *ngFor="let item of getAvailableProducts()" class="col py-3">
+            <a routerLink="/products/{{item.product.id}}" class="d-block border border-secondary p-3 text-center zoom">
+                <img [src] = "item.product.imagePath" alt="failed to load image" class="img-fluid mb-2">
                 <p>{{item.product.name}}</p>
                 <p>{{item.product.price}}</p>
-            </div>
+            </a>
         </div>
     </div>
 </div>
