@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+@include mat.core();
+@import 'bootstrap/scss/bootstrap';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+li a:hover {
+    cursor: pointer;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    box-shadow: none;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+body {
+    height: 100vh;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+app-root {
+    display: block;
+    height: 100%;
+}
+
+app-login, app-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

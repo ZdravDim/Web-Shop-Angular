@@ -1,0 +1,75 @@
+<div class="container-fluid d-flex px-0">
+  <div class="row w-100 d-flex justify-content-center">
+    <div class="col-sm d-flex flex-column p-3" style="max-width: 320px;">
+      <button class="btn btn-light option" (click)="showSection('profile')">My Profile</button><br>
+      <button class="btn btn-light option mb-3" (click)="showSection('resetPassword')">Reset Password</button>
+    </div>
+  
+    <div class="col-sm d-flex">
+      <div *ngIf="currentSection === 'profile'" class="w-100">
+        <h2 class="mb-2 mb-sm-5 fw-bold text-center text-sm-start">PROFILE INFO</h2>
+        <table class="table mx-auto mx-sm-0 mt-3 mt-sm-5 w-75" style="max-width: 900px;">
+          <tbody>
+            <tr>
+              <td>FIRST NAME</td>
+              <td><input #firstname value="{{user.firstname}}" [disabled]="!updatesEnabled"></td>
+            </tr>
+            <tr>
+              <td>LAST NAME</td>
+              <td><input #lastname value="{{user.lastname}}" [disabled]="!updatesEnabled"></td>
+            </tr>
+            <tr>
+              <td>EMAIL</td>
+              <td><input #email value="{{user.email}}" [disabled]="!updatesEnabled"></td>
+            </tr>
+            <tr>
+              <td>PHONE NUMBER</td>
+              <td><input #phone value="{{user.phone}}" [disabled]="!updatesEnabled"></td>
+            </tr>
+            <tr>
+              <td>ADDRESS</td>
+              <td><input #address value="{{user.address}}" [disabled]="!updatesEnabled"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-start max-width-400 mx-auto mx-sm-0" *ngIf="updatesEnabled">
+          <button class="btn btn-outline-danger me-2" (click)="cancelUpdate()">Cancel</button>
+          <button class="btn btn-outline-dark" (click)="applyUpdates()" type="submit">Apply changes</button>
+        </div>
+        <div *ngIf="updatesEnabled === false" class="d-flex align-items-center max-width-400 mx-auto mx-sm-0">
+          <button mat-icon-button color="primary" (click)="enableUpdate()">
+            <mat-icon class="mb-2">edit</mat-icon>
+          </button>
+          <p class="d-inline-flex mb-0">Update information</p><br>
+        </div>
+        
+        <div class="d-flex align-items-center max-width-400 mx-auto mx-sm-0">
+          <button mat-icon-button color="primary" (click)="logOut()">
+            <mat-icon class="mb-1">logout</mat-icon>
+          </button>
+          <p class="d-inline-flex mb-0">Log out</p><br>
+        </div>
+  
+      </div>
+  
+      <div *ngIf="currentSection === 'resetPassword'" class="w-100 d-flex flex-column align-items-center align-items-sm-start"> 
+        <h2 class="mb-3 mb-sm-5 fw-bold">RESET PASSWORD</h2>
+        <div class="mb-4 form-group">
+          <input type="password" class="form-control" placeholder="OLD PASSWORD" id="oldPassword" [(ngModel)]="oldPassword" name="oldPassword" required>
+        </div>
+        <div class="mb-4 form-group">
+          <input type="password" class="form-control" placeholder="NEW PASSWORD" id="newPassword" [(ngModel)]="newPassword" name="newPassword" required>
+        </div>
+        
+        <p *ngIf="someFieldsAreEmpty" class="text-danger">Please fill every field.</p>
+        <p *ngIf="passwordNotMatching" class="text-danger">Passwords not matching!</p>
+        <p *ngIf="passwordChanged" class="text-success">Passwords successfully changed!</p>
+  
+        <div class="d-flex justify-content-start">
+          <button class="btn btn-outline-danger me-2" (click)="cancel()">Cancel</button>
+          <button class="btn btn-outline-dark" (click)="resetPassword()" type="submit">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

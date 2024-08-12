@@ -1,0 +1,75 @@
+img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+p {
+    max-width: 500px;
+}
+
+ngb-rating {
+    color: rgb(255, 196, 0);
+}
+
+.size-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.size-option {
+    position: relative;
+    width: 100%;
+}
+
+.size-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 50px;
+    height: 50px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border 0.3s;
+    text-align: center;
+    line-height: 46px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.size-option input[type="radio"]:checked {
+    border: 2px solid #000;
+    background-color: #f0f0f0;
+}
+
+span {
+    color: #727272;
+}
+
+.sizes-div {
+    width: 100%;
+    max-width: 350px;
+}
+
+.size-option span {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0);
+    padding: 0 10px;
+    font-size: 14px;
+    color: #333;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+button {
+    width: 100%;
+    border-radius: 0px;
+}

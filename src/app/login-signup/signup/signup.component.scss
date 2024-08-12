@@ -1,0 +1,35 @@
+
+.form-container {
+    width: 30%;
+    min-width: 300px;
+    padding: 30px;
+    border: 1px solid;
+    border-radius: 20px;
+}
+
+.form-group {
+    width: 80%;
+    text-align: left;
+    color: rgb(81, 81, 81);
+    font-size: 1rem;
+}
+
+.form-control::placeholder {
+    font-size: 0.75rem; 
+    color: #888;
+}
+
+input {
+    border: none;            
+    border-bottom: 2px solid #ccc; 
+    border-radius: 0%;
+
+    &:focus {
+        border-bottom: 2px solid darkgray; 
+        outline: none;
+    }
+}
+
+.signup-option {
+    font-size: 0.85rem;
+}

@@ -1,0 +1,53 @@
+a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+        color: rgb(65, 65, 65);
+    }
+}
+
+span {
+    display: block;
+}
+
+.zoom {
+    transition: transform 0.05s ease-in-out;
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+.w-15 {
+    width: 25%;
+}
+
+.side-bar p {
+    color: #003e57;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+mat-icon {
+    color: #ffc83d;
+}
+
+#date-picker {
+    width: 235px;
+}
+
+.width-235 {
+    width: 235px;
+}
+
+#apply-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 55px;
+}
+
+@media screen and (min-width: 1500px) {
+    .side-bar {
+        padding-left: 3rem !important;
+    }
+    
+}

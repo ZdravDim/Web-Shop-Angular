@@ -1,0 +1,55 @@
+
+<header class="fixed-top bg-dark text-white py-3">
+    <div class="container d-flex justify-content-end">
+        <a class="bi bi-house-door fs-3 link-light" routerLink="/" routerLinkActive="active"></a> 
+    </div>
+</header>
+
+<div class="container row">
+    <div class="col-md-6 mt-5">
+        <div class="mx-auto form-container text-center p-3 m-5 w-75">
+            <h4 class="text-center my-4 py-3 fw-bold">Register to Web Shop</h4>
+            <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
+                <div class="my-3 mx-auto form-group">
+                    <input type="text" class="form-control" placeholder="First Name" id="userData.firstName" [(ngModel)]="userData.firstname" name="userData.firstName" required>
+                </div> 
+                <div class="my-3 mx-auto form-group">
+                    <input type="text" class="form-control" placeholder="Last Name" id="userData.lastname" [(ngModel)]="userData.lastname" name="userData.lastname" required>
+                </div> 
+                <div class="my-3 mx-auto form-group">
+                    <input type="text" class="form-control" placeholder="Address" id="userData.address" [(ngModel)]="userData.address" name="userData.address" required>
+                </div> 
+                <div class="my-3 mx-auto form-group">
+                    <input type="email" class="form-control" placeholder="Email address" id="userData.email" [(ngModel)]="userData.email" name="userData.email" required>
+                </div> 
+                <div class="mb-4 mx-auto form-group">
+                    <input type="password" class="form-control" placeholder="Password" id="userData.password" [(ngModel)]="userData.password" name="userData.password" required>
+                </div>
+                <div class="mb-4 mx-auto form-group">
+                    <input type="password" class="form-control" placeholder="Confirm password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                </div>
+                <p *ngIf="failedToSignup" class="text-danger">SignUp Unsuccessful!</p>
+                <p *ngIf="someFieldsAreEmpty" class="text-danger">Please fill every field.</p>
+                <p *ngIf="passwordNotMatching" class="text-danger">Passwords Not Matching!</p>
+                <div class="container text-center my-4">
+                    <button type="submit" class="btn btn-outline-dark">Submit</button>
+                </div>
+                <p class="signup-option">Already have an account? <a class="link-primary" routerLink="/login" routerLinkActive="active">Log in!</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-6 mt-5">
+        <div class="info-container p-4">
+            <h1 class="my-4 fw-bold">Welcome to Web Shop!</h1>
+            <p>Web Shop Company delivers quality products with a focus on excellent service. We are here to enhance your shopping experience.
+                Join us to discover a wide variety of clothing and accessories, from best materials and all quality-checked. Join us today!
+            </p>
+            <h4 class="py-3">What do you get?</h4>
+            <div class="mb-3"><i class="bi bi-truck fs-5 me-3"></i> <p class="d-inline">Track your orders easily</p></div>
+            <div class="mb-3"><i class="bi bi-bag-heart fs-5 me-3"></i> <p class="d-inline">Shop quality products</p></div>
+            <div class="mb-3"><i class="bi bi-clock-history fs-5 me-3"></i> <p class="d-inline">View your order history</p></div>
+            <div class="mb-3"><i class="bi bi-card-checklist fs-5 me-3"></i> <p class="d-inline">Save your favorite items</p></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.about-text {
+    max-width: 500px;
+}
+
+@media screen and (max-width: 565px) {
+    img {
+        height: auto;
+        max-width: 100%;
+    }
+}

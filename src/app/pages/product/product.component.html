@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column align-items-center align-items-md-end">
+            <img [src]="productInfo?.imagePath" class="mb-3">
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center align-items-md-start">
+            <span>{{ productInfo!.manufacturer }} | {{ Category[productInfo!.category] }}</span>
+            <h2 style="font-weight: bold;">{{ productInfo!.name }} </h2>
+
+            <div class="d-flex flex-row align-items-center">
+                <ngb-rating [max]="5" [rate]="productInfo!.rating" [disabled]="true" [readonly]="true" style="font-size: xx-large;" />
+                <span class="mt-1 ms-1"> ({{ productInfo!.reviews.length }})</span>
+            </div>
+
+            <p style="font-size: large;" class="mb-0 mb-sm-2">{{ productInfo!.price }} €</p>
+
+            <p>Select a size</p>
+
+            <div class="sizes-div">
+                <div class="size-selector">
+                    <label *ngFor="let size of getAvailableSizes()" class="size-option radio-label">
+                        <input type="radio" name="size" [value]="size">
+                        <span>{{ size }}</span>
+                    </label>
+                </div>
+    
+                <button class="btn btn-secondary mt-2 p-3">Add to cart</button>
+            </div>
+
+            <p class="mt-3 text-justify">{{ productInfo!.description }}</p>
+        </div>
+
+        <div>
+            napravi komponentu za prikaz review-a:
+            <p>{{ productInfo!.reviews }}</p>
+        </div>
+    </div>
+</div>
