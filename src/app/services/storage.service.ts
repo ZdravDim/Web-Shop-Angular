@@ -32,7 +32,7 @@ export class StorageService implements StorageServiceInterface {
         gender: gender,
         manufacturer: manifacturer,
         description: description,
-        imagePath: "/assets/products/" + (imagePath ?? currentTimeStamp.toISOString() + ".png"),
+        imagePath: "assets/products/" + (imagePath ?? currentTimeStamp.toISOString() + ".png"),
         reviews: [],
         rating: 1.7,
         createdAt: currentTimeStamp,
@@ -41,7 +41,7 @@ export class StorageService implements StorageServiceInterface {
       storage: [0, 0, 0, 0, 0, 0]
     })
 
-    // TODO: save image to assets/products folder
+    // TODO: save image to /assets/products folder
 
     if (!this.manifacturerExists(manifacturer)) {
       this.manifacturerList.push(manifacturer);

@@ -1,6 +1,7 @@
 {
   "name": "web-shop-angular",
   "version": "0.0.0",
+  "homepage": "https://ZdravDim.github.io/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
