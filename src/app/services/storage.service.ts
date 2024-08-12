@@ -100,19 +100,22 @@ export class StorageService implements StorageServiceInterface {
       took a galley of type and scrambled it to make a type specimen book. It has survived not only five 
       centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`;
 
-    this.createNewProduct("LINEN SHIRT", 4490, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "about.png");
-    this.createNewProduct("POLO T-SHIRT", 2490, Category.WORK, Gender.MEN, "ZARA", productDescription, "about.png");
-    this.createNewProduct("MIDI DRESS", 3390, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "about.png");
-    this.createNewProduct("MIDI SATEN SKIRT", 3990, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "about.png");
-    this.createNewProduct("BERMUDA SHORTS", 2700, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "about.png");
-    this.createNewProduct("TEXAS SHORTS", 2500, Category.CASUAL, Gender.WOMEN, "H&M", productDescription, "about.png");
-    this.createNewProduct("CARGO PANTS", 3390, Category.CASUAL, Gender.MEN, "H&M", productDescription);
-    this.createNewProduct("OVERSIZED T-SHIRT", 3990, Category.CASUAL, Gender.UNISEX, "ADIDAS", productDescription);
-    this.createNewProduct("SHORT SLEEVE SHIRT", 3490, Category.CASUAL, Gender.MEN, "NIKE", productDescription);
-    this.createNewProduct("RUNNING SET M", 5990, Category.SPORTS, Gender.MEN, "NIKE", productDescription);
-    this.createNewProduct("RUNNING SET W", 5990, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription);
+    this.createNewProduct("LINEN SHIRT", 35.90, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "about.png");
+    this.createNewProduct("POLO T-SHIRT", 40.00, Category.WORK, Gender.MEN, "ZARA", productDescription, "about.png");
+    this.createNewProduct("MIDI DRESS", 55.95, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "about.png");
+    this.createNewProduct("MIDI SATEN SKIRT", 25.99, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "about.png");
+    this.createNewProduct("BERMUDA SHORTS", 24.50, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "about.png");
+    this.createNewProduct("TEXAS SHORTS", 19.99, Category.CASUAL, Gender.WOMEN, "H&M", productDescription, "about.png");
+    this.createNewProduct("CARGO PANTS", 29.99, Category.CASUAL, Gender.MEN, "H&M", productDescription);
+    this.createNewProduct("OVERSIZED T-SHIRT", 39.50, Category.CASUAL, Gender.UNISEX, "ADIDAS", productDescription);
+    this.createNewProduct("SHORT SLEEVE SHIRT", 35.65, Category.CASUAL, Gender.MEN, "NIKE", productDescription);
+    this.createNewProduct("RUNNING SET M", 109.99, Category.SPORTS, Gender.MEN, "NIKE", productDescription);
+    this.createNewProduct("RUNNING SET W", 109.99, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription);
 
     this.addProductToStorage(0, Size.S, 1);
+    this.addProductToStorage(0, Size.M, 1);
+    this.addProductToStorage(0, Size.XL, 1);
+
     this.addProductToStorage(1, Size.M, 1);
 
     this.addProductToStorage(2, Size.XS, 1);
@@ -129,6 +132,9 @@ export class StorageService implements StorageServiceInterface {
     this.addProductToStorage(7, Size.S, 1);
     this.addProductToStorage(8, Size.XL, 1);
     this.addProductToStorage(9, Size.L, 1);
+
+    this.createProductReview("dz.com", 0, 5, "Some random review");  
+    this.createProductReview("dz.com", 0, 4, "Another random review");
   }
 
   getAllProducts(): ProductStorageInterface[] {
