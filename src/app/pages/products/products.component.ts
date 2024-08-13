@@ -24,6 +24,8 @@ import { PriceSliderComponent } from './price-slider/price-slider.component';
 
 export class ProductsComponent {
 
+  protected showFilters = false;
+
   protected dateFrom: Date | null = null;
   protected dateTo: Date | null = null;
 
@@ -50,6 +52,10 @@ export class ProductsComponent {
     }
   }
 
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
+  
   arraySum(arr: number[]): number {
     return arr.reduce((a, b) => a + b, 0);
   }

@@ -1,156 +1,167 @@
 <div class="d-flex flex-column flex-lg-row">
+
+    <button id="btn-1" class="filters-button d-flex" (click)="toggleFilters()" mat-button>
+        <span>{{ showFilters ? 'Hide Filters' : 'Show Filters' }}</span>
+        <mat-icon class="filters-icon">{{ showFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+    </button>
+
     <div class="side-bar w-25 ps-4 d-block">
 
-            <div class="left-div">
-                <p class="remove-top-margin">Gender</p>
+        <button id="btn-2" class="filters-button d-none" (click)="toggleFilters()" mat-button>
+            <span>{{ showFilters ? 'Hide Filters' : 'Show Filters' }}</span>
+            <mat-icon class="filters-icon">{{ showFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+        </button>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="MEN">
-                    <label class="form-check-label" for="MEN">MEN</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="WOMEN">
-                    <label class="form-check-label" for="WOMEN">WOMEN</label>
-                </div>
+        <div *ngIf="showFilters" class="left-div">
+            <p class="remove-top-margin">Gender</p>
 
-                <p>Style</p>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="WORK">
-                    <label class="form-check-label" for="WORK">WORK</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="SPORTS">
-                    <label class="form-check-label" for="SPORTS">SPORTS</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="FORMAL">
-                    <label class="form-check-label" for="FORMAL">FORMAL</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="CASUAL">
-                    <label class="form-check-label" for="CASUAL">CASUAL</label>
-                </div>
-
-                <p>Size</p>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="XS">
-                    <label class="form-check-label" for="XS">XS</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="S">
-                    <label class="form-check-label" for="S">S</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="M">
-                    <label class="form-check-label" for="M">M</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="L">
-                    <label class="form-check-label" for="L">L</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="XL">
-                    <label class="form-check-label" for="XL">XL</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="XXL">
-                    <label class="form-check-label" for="XXL">XXL</label>
-                </div>
-
-                <p>Manufacturer</p>
-
-                <div *ngFor="let manufacturer of manufacturers" class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="{{manufacturer}}">
-                    <label class="form-check-label" for="{{manufacturer}}">{{ manufacturer }}</label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="MEN">
+                <label class="form-check-label" for="MEN">MEN</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WOMEN">
+                <label class="form-check-label" for="WOMEN">WOMEN</label>
             </div>
 
-            <div class="right-div">
-                <p class="remove-top-margin">Date</p>
+            <p>Style</p>
 
-                <mat-form-field appearance="outline" id="date-picker">
-                    <mat-label>Enter a date range</mat-label>
-                    <mat-date-range-input [rangePicker]="picker">
-                        <input matInput
-                            (dateInput)="dateInputEvent(true, $event)"
-                            matStartDate
-                            placeholder="Start date"
-                        />
-                        <input 
-                            matInput
-                            (dateInput)="dateInputEvent(false, $event)"
-                            matEndDate
-                            placeholder="End date"
-                        />
-                    </mat-date-range-input>
-                    <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
-                </mat-form-field>
-
-                <p>Price</p>
-
-                <div class="d-flex flex-column" style="width: 220px;">
-                    <app-price-slider></app-price-slider>
-                </div>
-
-                <p>Reviews</p>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="1">
-                    <label class="form-check-label" for="1">
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="2">
-                    <label class="form-check-label" for="2">
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="3">
-                    <label class="form-check-label" for="3">
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="4">
-                    <label class="form-check-label" for="4">
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star_border</mat-icon>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="5">
-                    <label class="form-check-label" for="5">
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star</mat-icon>
-                    </label>
-                </div>
-
-                <button mat-flat-button class="mat-primary width-235" id="apply-button" (click)="filterProducts()">Apply filters</button>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="WORK">
+                <label class="form-check-label" for="WORK">WORK</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="SPORTS">
+                <label class="form-check-label" for="SPORTS">SPORTS</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="FORMAL">
+                <label class="form-check-label" for="FORMAL">FORMAL</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="CASUAL">
+                <label class="form-check-label" for="CASUAL">CASUAL</label>
+            </div>
+
+            <p>Size</p>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="XS">
+                <label class="form-check-label" for="XS">XS</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="S">
+                <label class="form-check-label" for="S">S</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="M">
+                <label class="form-check-label" for="M">M</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="L">
+                <label class="form-check-label" for="L">L</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="XL">
+                <label class="form-check-label" for="XL">XL</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="XXL">
+                <label class="form-check-label" for="XXL">XXL</label>
+            </div>
+
+            <p>Manufacturer</p>
+
+            <div *ngFor="let manufacturer of manufacturers" class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="{{manufacturer}}">
+                <label class="form-check-label" for="{{manufacturer}}">{{ manufacturer }}</label>
+            </div>
+        </div>
+
+        <div *ngIf="showFilters" class="right-div">
+            <p class="remove-top-margin">Date</p>
+
+            <mat-form-field appearance="outline" id="date-picker">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matInput
+                        (dateInput)="dateInputEvent(true, $event)"
+                        matStartDate
+                        placeholder="Start date"
+                    />
+                    <input 
+                        matInput
+                        (dateInput)="dateInputEvent(false, $event)"
+                        matEndDate
+                        placeholder="End date"
+                    />
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+
+            <p>Price</p>
+
+            <div class="d-flex flex-column" style="width: 220px;">
+                <app-price-slider></app-price-slider>
+            </div>
+
+            <p>Reviews</p>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="1">
+                <label class="form-check-label" for="1">
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="2">
+                <label class="form-check-label" for="2">
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="3">
+                <label class="form-check-label" for="3">
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="4">
+                <label class="form-check-label" for="4">
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="5">
+                <label class="form-check-label" for="5">
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                </label>
+            </div>
+
+            <button mat-flat-button class="mat-primary width-235" id="apply-button" (click)="filterProducts()">Apply filters</button>
+        </div>
     </div>
     <div class="container-fluid">
 

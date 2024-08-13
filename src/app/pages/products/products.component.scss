@@ -42,6 +42,14 @@ mat-icon {
     width: 150px;
 }
 
+.filters-icon {
+    color: #3f51b5;
+}
+
+.filters-button {
+    padding: 10px !important;
+}
+
 @media screen and (min-width: 470px) and (max-width: 991px)  {
     .side-bar {
         width: 100% !important;
@@ -61,6 +69,24 @@ mat-icon {
 
     .remove-top-margin {
         margin-top: 0px !important;
+    }
+
+    .filters-button {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .filters-button {
+        height: 50px;
+    }
+
+    #btn-1 {
+        display: none !important;
+    }
+
+    #btn-2 {
+        display: flex !important;
     }
 }
 
