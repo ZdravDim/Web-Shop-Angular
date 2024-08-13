@@ -17,10 +17,6 @@ span {
     }
 }
 
-.w-15 {
-    width: 25%;
-}
-
 .side-bar p {
     color: #003e57;
     margin-top: 30px;
@@ -42,12 +38,34 @@ mat-icon {
 #apply-button {
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 55px;
+    margin-left: 40px;
+    width: 150px;
+}
+
+@media screen and (min-width: 470px) and (max-width: 991px)  {
+    .side-bar {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+    }
+
+    .left-div {
+        margin-left: auto;
+        margin-right: 4%;
+    }
+
+    .right-div {
+        margin-right: auto;
+        margin-left: 4%;
+    }
+
+    .remove-top-margin {
+        margin-top: 0px !important;
+    }
 }
 
 @media screen and (min-width: 1500px) {
     .side-bar {
         padding-left: 3rem !important;
     }
-    
 }
