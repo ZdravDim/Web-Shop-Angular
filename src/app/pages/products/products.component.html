@@ -12,7 +12,7 @@
             <mat-icon class="filters-icon">{{ showFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
         </button>
 
-        <div *ngIf="showFilters" class="left-div">
+        <div id="left-div" class="left-div">
             <p class="remove-top-margin">Gender</p>
 
             <div class="form-check">
@@ -78,7 +78,7 @@
             </div>
         </div>
 
-        <div *ngIf="showFilters" class="right-div">
+        <div id="right-div" class="right-div">
             <p class="remove-top-margin">Date</p>
 
             <mat-form-field appearance="outline" id="date-picker">

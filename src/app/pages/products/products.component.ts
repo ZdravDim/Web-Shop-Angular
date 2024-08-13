@@ -24,7 +24,7 @@ import { PriceSliderComponent } from './price-slider/price-slider.component';
 
 export class ProductsComponent {
 
-  protected showFilters = false;
+  protected showFilters = true;
 
   protected dateFrom: Date | null = null;
   protected dateTo: Date | null = null;
@@ -44,16 +44,18 @@ export class ProductsComponent {
     const lastString = fullUrl.substring(fullUrl.lastIndexOf('/') + 1);
     if (lastString === 'men') {
       this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.gender === Gender.MEN || product.productInfo.gender === Gender.UNISEX);
-      (document.getElementById("MEN") as HTMLInputElement).checked = true;
+      // (document.getElementById("MEN") as HTMLInputElement).checked = true;
     }
     else if (lastString === 'women') {
       this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.gender === Gender.WOMEN || product.productInfo.gender === Gender.UNISEX);
-      (document.getElementById("WOMEN") as HTMLInputElement).checked = true;
+      // (document.getElementById("WOMEN") as HTMLInputElement).checked = true;
     }
   }
 
   toggleFilters() {
     this.showFilters = !this.showFilters;
+    (document.getElementById('left-div') as HTMLElement).style.display = this.showFilters ? 'block' : 'none';
+    (document.getElementById('right-div') as HTMLElement).style.display = this.showFilters ? 'block' : 'none';
   }
   
   arraySum(arr: number[]): number {
