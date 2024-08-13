@@ -1,5 +1,5 @@
 <div class="d-flex flex-row">
-    <div class="side-bar w-15 p-3">
+    <div class="side-bar w-15 ps-4">
         <div class="width-235">
 
             <p>Gender</p>
@@ -149,6 +149,11 @@
         </div>
     </div>
     <div class="container-fluid">
+
+        <div *ngIf="getAvailableProducts().length === 0">
+            <span>No products found.</span>
+        </div>
+
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <div *ngFor="let item of getAvailableProducts()" class="col py-3">
                 <a [routerLink]="['/products', item.productInfo.id]" class="d-block border border-secondary p-3 text-center zoom">

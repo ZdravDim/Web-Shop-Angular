@@ -155,7 +155,7 @@ export class StorageService implements StorageServiceInterface {
     };
     
     const productToReview = this.storage.products.find(product => product.productInfo.id == productId)!.productInfo;
-    productToReview.reviews.push(productReview);
+    productToReview.reviews.unshift(productReview);
     productToReview.rating = productToReview.reviews.reduce((acc, review) => acc + review.rating, 0) / productToReview.reviews.length;
   }
 }

@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { Category } from '../../enums/product';
 import { Size } from '../../enums/product';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../../services/user.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ CommonModule, NgbRatingModule ],
+  imports: [ CommonModule, NgbRatingModule, FormsModule ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
@@ -23,7 +25,11 @@ export class ProductComponent {
   productInfo?: ProductInterface;
   availabilityMap: any = {};
 
-  constructor(private route: ActivatedRoute, private storageService: StorageService) {}
+  userRating: number = 0; 
+  userComment: string = '';
+  emptyReviewFields: boolean = false;
+
+  constructor(private route: ActivatedRoute, private storageService: StorageService, protected userService: UserService) {}
   
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -48,4 +54,21 @@ export class ProductComponent {
   getAvailableSizes(): string[] {
     return this.availabilityMap.filter((size: any) => size[1] > 0).map((size: any) => size[0]);
   }
+
+  submitReview(): boolean {
+    if (this.userRating === 0 || this.userComment === "" || this.userService.getUserLoggedIn() === false) {
+      this.emptyReviewFields = true;
+      return false;
+    }
+    this.storageService.createProductReview(this.userService.getCurrentUser().email, this.productId!, this.userRating, this.userComment);
+    this.clearReviewSection();
+    return false;
+  }
+
+  clearReviewSection(): void {
+    this.emptyReviewFields = false;
+    this.userRating = 0;
+    this.userComment = "";
+  }
+
 }
