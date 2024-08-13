@@ -68,28 +68,30 @@
 
             <p>Date</p>
 
-            <mat-form-field id="date-picker">
+            <mat-form-field appearance="outline" id="date-picker">
                 <mat-label>Enter a date range</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate placeholder="Start date">
-                <input matEndDate placeholder="End date">
+                    <input matInput
+                        (dateInput)="dateInputEvent(true, $event)"
+                        matStartDate
+                        placeholder="Start date"
+                    />
+                    <input 
+                        matInput
+                        (dateInput)="dateInputEvent(false, $event)"
+                        matEndDate
+                        placeholder="End date"
+                    />
                 </mat-date-range-input>
                 <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
-            
+
             <p>Price</p>
 
             <div class="d-flex flex-column width-235">
-                <mat-slider min="0" max="5000">
-                    <input value="1000" matSliderStartThumb #sliderStart>
-                    <input value="4000" matSliderEndThumb #sliderEnd>
-                </mat-slider>
-                
-                <div class="mx-auto">
-                    <label class="example-value-label">{{sliderStart.value}}</label> - <label class="example-value-label">{{sliderEnd.value}}</label>
-                </div>
+                <app-price-slider></app-price-slider>
             </div>
 
             <p>Reviews</p>

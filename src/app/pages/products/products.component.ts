@@ -6,16 +6,16 @@ import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { Category, Gender, Size } from '../../enums/product';
+import { PriceSliderComponent } from './price-slider/price-slider.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule, MatFormFieldModule, MatDatepickerModule, MatSliderModule, MatButtonModule],
+  imports: [CommonModule, RouterModule, MatIconModule, MatFormFieldModule, MatDatepickerModule, MatButtonModule, PriceSliderComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
   providers: [provideNativeDateAdapter()],
@@ -23,6 +23,9 @@ import { Category, Gender, Size } from '../../enums/product';
 })
 
 export class ProductsComponent {
+
+  protected dateFrom: Date | null = null;
+  protected dateTo: Date | null = null;
 
   protected manufacturers: String[];
   protected products: ProductStorageInterface[];
@@ -55,8 +58,15 @@ export class ProductsComponent {
     return this.filteredProducts.filter(product => this.arraySum(product.storage) > 0);
   }
 
+  dateInputEvent(startDate: boolean, event: MatDatepickerInputEvent<Date>) {
+    if (startDate) {
+      this.dateFrom = new Date(event.value!);
+    } else {
+      this.dateTo = new Date(event.value!);
+    }
+  }
+
   filterProducts(): void {
-    let anythingChecked: boolean = false;
     this.filteredProducts = this.products;
     
     // Filter by gender
@@ -66,7 +76,6 @@ export class ProductsComponent {
     if ((document.getElementById("WOMEN") as HTMLInputElement).checked) genderChecked.push(Gender.WOMEN);
 
     if (genderChecked.length > 0) {
-      anythingChecked = true;
       this.filteredProducts = this.filteredProducts.filter(product => genderChecked.includes(product.productInfo.gender) || product.productInfo.gender === Gender.UNISEX);
     }
 
@@ -79,7 +88,6 @@ export class ProductsComponent {
     if ((document.getElementById('CASUAL') as HTMLInputElement).checked) stylesCheched.push(Category.CASUAL);
 
     if (stylesCheched.length > 0) {
-      anythingChecked = true;
       this.filteredProducts = this.filteredProducts.filter(product => stylesCheched.includes(product.productInfo.category));
     }
 
@@ -94,7 +102,6 @@ export class ProductsComponent {
     if ((document.getElementById('XXL') as HTMLInputElement).checked) sizesChecked.push(Size.XXL);
 
     if (sizesChecked.length > 0) {
-      anythingChecked = true;
       this.filteredProducts = this.filteredProducts.filter(product => sizesChecked.some(size => product.storage[size] > 0));
     }
 
@@ -106,15 +113,32 @@ export class ProductsComponent {
     }
 
     if (manufacturersChecked.length > 0) {
-      anythingChecked = true;
       this.filteredProducts = this.filteredProducts.filter(product => manufacturersChecked.includes(product.productInfo.manufacturer));
     }
 
-    //...
-
-    if (!anythingChecked) {
-      this.filteredProducts = this.products;
+    // Filter by date
+    if (this.dateFrom !== null) {
+      this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.createdAt >= this.dateFrom!);
     }
+    if (this.dateTo !== null) {
+      this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.createdAt <= this.dateTo!);
+    }
+
+    // Filter by rating
+    const ratingChecked: number[] = [];
+
+    for (let i = 1; i <= 5; i++) {
+      if ((document.getElementById(i.toString()) as HTMLInputElement).checked) ratingChecked.push(i);
+    }
+
+    if (ratingChecked.length > 0) {
+      this.filteredProducts = this.filteredProducts.filter(product => ratingChecked.includes(Math.round(product.productInfo.rating)));
+    }
+
+    // Filter by price
+    const priceFrom = (document.getElementById('sliderStart')! as HTMLInputElement).value;
+    const priceTo = (document.getElementById('sliderEnd')! as HTMLInputElement).value;
+    this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.price >= parseInt(priceFrom) && product.productInfo.price <= parseInt(priceTo));
 
   }
 }

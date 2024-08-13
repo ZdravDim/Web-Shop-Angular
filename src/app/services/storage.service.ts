@@ -34,7 +34,7 @@ export class StorageService implements StorageServiceInterface {
         description: description,
         imagePath: "assets/products/" + (imagePath ?? currentTimeStamp.toISOString() + ".png"),
         reviews: [],
-        rating: 1.7,
+        rating: 1,
         createdAt: currentTimeStamp,
         updatedAt: undefined
       },

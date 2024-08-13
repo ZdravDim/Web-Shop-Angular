@@ -1,0 +1,8 @@
+<mat-slider min="0" max="500" class="w-100">
+    <input value="000" matSliderStartThumb #sliderStart id="sliderStart">
+    <input value="500" matSliderEndThumb #sliderEnd id="sliderEnd">
+</mat-slider>
+
+<div class="mx-auto">
+    <label class="example-value-label">{{sliderStart.value}}</label> - <label class="example-value-label">{{sliderEnd.value}}</label>
+</div>
