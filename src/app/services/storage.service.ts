@@ -106,11 +106,11 @@ export class StorageService implements StorageServiceInterface {
     this.createNewProduct("MIDI SATEN SKIRT", 25.99, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "about.png");
     this.createNewProduct("BERMUDA SHORTS", 24.50, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "about.png");
     this.createNewProduct("TEXAS SHORTS", 19.99, Category.CASUAL, Gender.WOMEN, "H&M", productDescription, "about.png");
-    this.createNewProduct("CARGO PANTS", 29.99, Category.CASUAL, Gender.MEN, "H&M", productDescription);
-    this.createNewProduct("OVERSIZED T-SHIRT", 39.50, Category.CASUAL, Gender.UNISEX, "ADIDAS", productDescription);
-    this.createNewProduct("SHORT SLEEVE SHIRT", 35.65, Category.CASUAL, Gender.MEN, "NIKE", productDescription);
-    this.createNewProduct("RUNNING SET M", 109.99, Category.SPORTS, Gender.MEN, "NIKE", productDescription);
-    this.createNewProduct("RUNNING SET W", 109.99, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription);
+    this.createNewProduct("CARGO PANTS", 29.99, Category.CASUAL, Gender.MEN, "H&M", productDescription, "about.png");
+    this.createNewProduct("OVERSIZED T-SHIRT", 39.50, Category.CASUAL, Gender.UNISEX, "ADIDAS", productDescription, "about.png");
+    this.createNewProduct("SHORT SLEEVE SHIRT", 35.65, Category.CASUAL, Gender.MEN, "NIKE", productDescription, "about.png");
+    this.createNewProduct("RUNNING SET M", 109.99, Category.SPORTS, Gender.MEN, "NIKE", productDescription, "about.png");
+    this.createNewProduct("RUNNING SET W", 109.99, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription, "about.png");
 
     this.addProductToStorage(0, Size.S, 1);
     this.addProductToStorage(0, Size.M, 1);

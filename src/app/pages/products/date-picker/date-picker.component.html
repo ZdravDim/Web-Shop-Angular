@@ -1,0 +1,21 @@
+<mat-form-field appearance="outline" id="date-picker">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+        <input matInput
+        id="dateFrom"
+            (dateInput)="dateInputEvent(true, $event)"
+            matStartDate
+            placeholder="Start date"
+        />
+        <input
+            id="dateTo"
+            matInput
+            (dateInput)="dateInputEvent(false, $event)"
+            matEndDate
+            placeholder="End date"
+        />
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>

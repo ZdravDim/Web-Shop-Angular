@@ -1,33 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { ProductStorageInterface } from '../../interfaces/product';
 import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { ChangeDetectionStrategy } from '@angular/core';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { Category, Gender, Size } from '../../enums/product';
 import { PriceSliderComponent } from './price-slider/price-slider.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule, MatFormFieldModule, MatDatepickerModule, MatButtonModule, PriceSliderComponent],
+  imports: [CommonModule, RouterModule, MatIconModule, MatButtonModule, PriceSliderComponent, DatePickerComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
-  providers: [provideNativeDateAdapter()],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
+
+  @ViewChild(DatePickerComponent) protected datePickerComponent!: DatePickerComponent;
 
   protected showFilters = true;
-
-  protected dateFrom: Date | null = null;
-  protected dateTo: Date | null = null;
 
   protected manufacturers: String[];
   protected products: ProductStorageInterface[];
@@ -44,11 +38,11 @@ export class ProductsComponent {
     const lastString = fullUrl.substring(fullUrl.lastIndexOf('/') + 1);
     if (lastString === 'men') {
       this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.gender === Gender.MEN || product.productInfo.gender === Gender.UNISEX);
-      // (document.getElementById("MEN") as HTMLInputElement).checked = true;
+      (document.getElementById("MEN") as HTMLInputElement).checked = true;
     }
     else if (lastString === 'women') {
       this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.gender === Gender.WOMEN || product.productInfo.gender === Gender.UNISEX);
-      // (document.getElementById("WOMEN") as HTMLInputElement).checked = true;
+      (document.getElementById("WOMEN") as HTMLInputElement).checked = true;
     }
   }
 
@@ -64,14 +58,6 @@ export class ProductsComponent {
 
   getAvailableProducts(): ProductStorageInterface[] {
     return this.filteredProducts.filter(product => this.arraySum(product.storage) > 0);
-  }
-
-  dateInputEvent(startDate: boolean, event: MatDatepickerInputEvent<Date>) {
-    if (startDate) {
-      this.dateFrom = new Date(event.value!);
-    } else {
-      this.dateTo = new Date(event.value!);
-    }
   }
 
   filterProducts(): void {
@@ -125,11 +111,13 @@ export class ProductsComponent {
     }
 
     // Filter by date
-    if (this.dateFrom !== null) {
-      this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.createdAt >= this.dateFrom!);
+    const dateFrom = this.datePickerComponent.getDateFrom();
+    if (dateFrom !== null) {
+      this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.createdAt >= dateFrom!);
     }
-    if (this.dateTo !== null) {
-      this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.createdAt <= this.dateTo!);
+    const dateTo = this.datePickerComponent.getDateTo();
+    if (dateTo !== null) {
+      this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.createdAt <= dateTo!);
     }
 
     // Filter by rating
