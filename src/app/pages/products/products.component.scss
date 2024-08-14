@@ -11,9 +11,10 @@ span {
 }
 
 .zoom {
-    transition: transform 0.05s ease-in-out;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     &:hover {
         transform: scale(1.02);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
 }
 

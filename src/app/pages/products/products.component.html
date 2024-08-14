@@ -91,7 +91,7 @@
 
             <p>Reviews</p>
 
-            <div class="form-check">
+            <div class="form-check width-235">
                 <input class="form-check-input" type="checkbox" value="" id="1">
                 <label class="form-check-label" for="1">
                     <mat-icon>star</mat-icon>
@@ -101,7 +101,7 @@
                     <mat-icon>star_border</mat-icon>
                 </label>
             </div>
-            <div class="form-check">
+            <div class="form-check width-235">
                 <input class="form-check-input" type="checkbox" value="" id="2">
                 <label class="form-check-label" for="2">
                     <mat-icon>star</mat-icon>
@@ -111,7 +111,7 @@
                     <mat-icon>star_border</mat-icon>
                 </label>
             </div>
-            <div class="form-check">
+            <div class="form-check width-235">
                 <input class="form-check-input" type="checkbox" value="" id="3">
                 <label class="form-check-label" for="3">
                     <mat-icon>star</mat-icon>
@@ -121,7 +121,7 @@
                     <mat-icon>star_border</mat-icon>
                 </label>
             </div>
-            <div class="form-check">
+            <div class="form-check width-235">
                 <input class="form-check-input" type="checkbox" value="" id="4">
                 <label class="form-check-label" for="4">
                     <mat-icon>star</mat-icon>
@@ -131,7 +131,7 @@
                     <mat-icon>star_border</mat-icon>
                 </label>
             </div>
-            <div class="form-check">
+            <div class="form-check width-235">
                 <input class="form-check-input" type="checkbox" value="" id="5">
                 <label class="form-check-label" for="5">
                     <mat-icon>star</mat-icon>
@@ -153,7 +153,7 @@
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <div *ngFor="let item of getAvailableProducts()" class="col py-3">
-                <a [routerLink]="['/products', item.productInfo.id]" class="d-block border border-secondary p-3 text-center zoom">
+                <a [routerLink]="['/products', item.productInfo.id]" class="d-block border text-center zoom pb-1" style="border-color: rgb(216, 216, 216) !important;">
                     <img [src] = "item.productInfo.imagePath" alt="failed to load image" class="img-fluid mb-2">
                     <span>{{item.productInfo.name}}</span>
                     <span class="text-secondary">{{item.productInfo.manufacturer}}</span>
