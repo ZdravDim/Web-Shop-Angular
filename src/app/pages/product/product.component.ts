@@ -25,7 +25,7 @@ export class ProductComponent {
   productInfo?: ProductInterface;
   availabilityMap: any = {};
 
-  userRating: number = 0; 
+  userRating: number = 0;
   userComment: string = '';
   emptyReviewFields: boolean = false;
 

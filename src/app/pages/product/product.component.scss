@@ -79,3 +79,23 @@ button {
     max-width: 1100px;
     width: 100%;
 }
+
+.bi-star-fill {
+    position: relative;
+    display: inline-block;
+    font-size: 1.8rem;
+    padding-right: 0.2rem;
+    color: #d3d3d3;
+}
+
+.reviews-div .bi-star-fill {
+    font-size: 1rem;
+}
+
+.filled {
+    color: #ffc400;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
