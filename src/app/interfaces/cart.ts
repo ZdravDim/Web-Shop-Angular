@@ -1,12 +1,18 @@
+import { Size } from "../enums/product";
 import { ProductInterface } from "./product";
 
+export interface CartItemInterface {
+    product: ProductInterface;
+    size: Size;
+}
+
 export interface CartInterface {
-    products: ProductInterface[]; 
+    products: CartItemInterface[]; 
     price: number;
 }
 
 export interface CartServiceInterface {
-    addToCart(product: ProductInterface): void;
-    removeFromCart(product: ProductInterface): boolean;
+    addToCart(product: ProductInterface, size: Size): void;
+    removeFromCart(product: CartItemInterface): boolean;
     emptyCart() : void;
 }
