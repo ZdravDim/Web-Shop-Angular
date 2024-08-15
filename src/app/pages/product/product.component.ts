@@ -8,6 +8,7 @@ import { Size } from '../../enums/product';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -25,11 +26,12 @@ export class ProductComponent {
   productInfo?: ProductInterface;
   availabilityMap: any = {};
 
+  selectedSize: Size | null = null;
   userRating: number = 0;
   userComment: string = '';
   emptyReviewFields: boolean = false;
 
-  constructor(private route: ActivatedRoute, private storageService: StorageService, protected userService: UserService) {}
+  constructor(private route: ActivatedRoute, private storageService: StorageService, protected userService: UserService, private cartService: CartService) {}
   
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -69,6 +71,12 @@ export class ProductComponent {
     this.emptyReviewFields = false;
     this.userRating = 0;
     this.userComment = "";
+  }
+
+  addToCart(): void {
+    if (this.selectedSize === null) return; 
+    this.cartService.addToCart(this.productInfo!, this.selectedSize); 
+    // notify if size not selected and if item added to cart
   }
 
 }

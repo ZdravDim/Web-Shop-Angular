@@ -67,28 +67,6 @@ export class UserService implements UserServiceInterface {
     this.userLoggedIn = false;
   }
 
-  addToCart(product: ProductInterface, size: Size): void {
-    this.currentUser!.cart.products.push(product);
-    this.currentUser!.cart.price += product.price;
-  }
-
-  removeFromCart(product: ProductInterface): boolean {
-    const index = this.currentUser!.cart.products.findIndex(p => p.id === product.id);
-
-    if (index !== -1) {
-      this.currentUser!.cart.products.splice(index, 1);
-      this.currentUser!.cart.price -= product.price;
-      // return product to storage, needs size attribute 
-      return true;
-    }
-    return false;
-  }
-
-  emptyCart(): void {
-    this.currentUser!.cart.products = [];
-    this.currentUser!.cart.price = 0;
-  }
-
   getUserList(): Map<string, UserInterface> {
     return this.userList;
   }
