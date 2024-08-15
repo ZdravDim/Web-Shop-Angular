@@ -3,7 +3,6 @@ import { CartItemInterface, CartServiceInterface } from '../interfaces/cart';
 import { ProductInterface } from '../interfaces/product';
 import { UserInterface } from '../interfaces/user';
 import { UserService } from './user.service';
-import { StorageServiceInterface } from '../interfaces/storage';
 import { StorageService } from './storage.service';
 import { Size } from '../enums/product';
 
@@ -21,6 +20,7 @@ export class CartService implements CartServiceInterface {
   addToCart(product: ProductInterface, size: Size): void {
     this.currentUser!.cart.products.push({product, size});
     this.currentUser!.cart.price += product.price;
+    this.storageService.reserveProduct(product.id, size);
   }
 
   removeFromCart(item: CartItemInterface): boolean {

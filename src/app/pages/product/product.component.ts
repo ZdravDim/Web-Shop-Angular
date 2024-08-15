@@ -27,6 +27,7 @@ export class ProductComponent {
   availabilityMap: any = {};
 
   selectedSize: Size | null = null;
+  sizeNotSelected: boolean = false;
   userRating: number = 0;
   userComment: string = '';
   emptyReviewFields: boolean = false;
@@ -74,9 +75,12 @@ export class ProductComponent {
   }
 
   addToCart(): void {
-    if (this.selectedSize === null) return; 
+    if (this.selectedSize === null) {
+      this.sizeNotSelected = true;
+      return;
+    }
     this.cartService.addToCart(this.productInfo!, this.selectedSize); 
-    // notify if size not selected and if item added to cart
+    this.sizeNotSelected = false;
   }
 
 }
