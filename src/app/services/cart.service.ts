@@ -42,4 +42,5 @@ export class CartService implements CartServiceInterface {
     this.currentUser!.cart.products = [];
     this.currentUser!.cart.price = 0;
   }
+
 }

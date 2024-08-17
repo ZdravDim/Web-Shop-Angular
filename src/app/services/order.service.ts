@@ -14,11 +14,11 @@ export class OrderService implements OrderServiceInterface {
 
   private orderCnt = 0;
 
-  createOrder(address: string): void {
+  createOrder(): void {
     const newOrder: OrderInterface = {
       id: this.orderCnt++,
       cart: this.userService.getCurrentUser().cart,
-      address: address,
+      address: this.userService.getCurrentUser().address,
       status: OrderStatus.PROCESSING,
       createdAt: new Date()
     }

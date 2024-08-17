@@ -13,7 +13,7 @@ export interface OrderInterface {
 }
 
 export interface OrderServiceInterface {
-  createOrder(address: string) : void;
-  cancelOrder(iorderId: number) : void;
+  createOrder() : void;
+  cancelOrder(orderId: number) : void;
   createOrderReview(userEmail: string, orderId: number, rating: number, comment?: string): void;
 }
