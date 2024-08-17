@@ -21,6 +21,7 @@ export class UserService implements UserServiceInterface {
       },
       phone: "+3812345678",
       password: "123",
+      admin: true,
       createdAt: new Date(),
       orders: []
     });
@@ -58,7 +59,7 @@ export class UserService implements UserServiceInterface {
     return this.currentUser!;
   }
 
-  getUserLoggedIn(): boolean {
+  isUserLoggedIn(): boolean {
     return this.userLoggedIn;
   }
 
@@ -69,5 +70,10 @@ export class UserService implements UserServiceInterface {
 
   getUserList(): Map<string, UserInterface> {
     return this.userList;
+  }
+
+  isCurrentUserAdmin(): boolean {
+    if (!this.userLoggedIn) return false;
+    return this.currentUser!.admin;
   }
 }

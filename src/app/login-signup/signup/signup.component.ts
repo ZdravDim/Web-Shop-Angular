@@ -32,6 +32,7 @@ export class SignupComponent {
     createdAt: new Date(),
     updatedAt: undefined,
     orders: [],
+    admin: false,
 
     cart: {
       products: [],

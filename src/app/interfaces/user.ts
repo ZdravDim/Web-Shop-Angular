@@ -8,10 +8,11 @@ export interface UserInterface {
     address: string;
     phone: string;
     password: string;
-    createdAt: Date;
-    updatedAt?: Date;
     orders: OrderInterface[];
     cart: CartInterface;
+    admin: boolean;
+    createdAt: Date;
+    updatedAt?: Date;
 }
 
 export interface UserServiceInterface {
@@ -19,4 +20,5 @@ export interface UserServiceInterface {
     login(email: string, password: string): boolean;
     updateUser(email: string, userData: UserInterface): boolean;
     getUserList(): Map<string, UserInterface>;
+    isCurrentUserAdmin(): boolean;
 }
