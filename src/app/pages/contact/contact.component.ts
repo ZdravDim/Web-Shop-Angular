@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent {}
+export class ContactComponent implements AfterViewInit {
+  ngAfterViewInit() {
+    document.getElementById("myForm")?.addEventListener("submit", function(e) {
+      if ((document.getElementById('myForm') as HTMLFormElement).checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      document.getElementById("myForm")?.classList.add("was-validated");
+    });
+  }
+}
