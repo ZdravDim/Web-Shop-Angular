@@ -59,7 +59,7 @@ export class ProductComponent {
   }
 
   submitReview(): boolean {
-    if (this.userRating === 0 || this.userComment === "" || this.userService.getUserLoggedIn() === false) {
+    if (this.userRating === 0 || this.userComment === "" || this.userService.isUserLoggedIn() === false) {
       this.emptyReviewFields = true;
       return false;
     }

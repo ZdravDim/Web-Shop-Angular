@@ -18,3 +18,11 @@
 .bi:hover {
     color: rgb(65, 65, 65) !important;
 }
+
+.admin-link {
+    color: #ff0000;
+}
+
+.admin-link.active {
+    color: #aa0000;
+}

@@ -4,16 +4,19 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { UserGuard } from './user.guard';
+import { UserGuard } from './guards/user.guard';
 import { LoginComponent } from './login-signup/login/login.component';
 import { SignupComponent } from './login-signup/signup/signup.component';
 import { WebsiteComponent } from './website/website.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { AdminGuard } from './guards/admin.guard';
+import { VisitorGuard } from './guards/visitor.guard';
+import { AdminComponent } from './pages/admin/admin.component';
 
 export const routes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: 'signup', component: SignupComponent },
+    { path: 'login', component: LoginComponent, canActivate: [VisitorGuard] },
+    { path: 'signup', component: SignupComponent, canActivate: [VisitorGuard] },
     { path: '', component: WebsiteComponent, children: [
         { path: '', component: HomeComponent },
         { path: 'contact', component: ContactComponent },
@@ -24,6 +27,7 @@ export const routes: Routes = [
             { path: 'men', component: ProductsComponent },
             { path: 'women', component: ProductsComponent }
         ]},
-        { path: 'products/:id', component: ProductComponent }
+        { path: 'products/:id', component: ProductComponent },
+        { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] }
     ]}
 ];
