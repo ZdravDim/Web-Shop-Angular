@@ -1,1 +1,19 @@
-<p>contact works!</p>
+<div class="d-flex flex-column p-3 align-items-center">
+    <h2>Contact Us</h2>
+
+    <form id="myForm" class="needs-validation" action="/" method="post" novalidate>
+        <div class="form-group">
+            <label for="nameInput">Name *</label>
+            <input type="text" class="form-control" id="nameInput" required>
+          </div>
+        <div class="form-group">
+          <label for="emailInput">Email *</label>
+          <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="messageInput">Message *</label>
+          <textarea class="form-control" id="messageInput" rows="6" required></textarea>
+        </div>
+        <button class="btn btn-outline-primary" type="submit">Contact Us</button>
+      </form>
+</div>
