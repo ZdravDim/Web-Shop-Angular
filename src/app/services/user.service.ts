@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { UserInterface, UserServiceInterface } from '../interfaces/user';
-import { ProductInterface } from '../interfaces/product';
-import { Size } from '../enums/product';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +8,10 @@ import { Size } from '../enums/product';
 export class UserService implements UserServiceInterface {
 
   constructor() {
-    this.userList.set("dz.com", {
+    this.userList.set("dimitrijezdravkovic20@gmail.com", {
       firstname: "Dimitrije",
       lastname: "Zdravkovic",
-      email: "dz.com",
+      email: "dimitrijezdravkovic20@gmail.com",
       address: "Some Address 123",
       cart: {
           products: [],
@@ -26,7 +24,23 @@ export class UserService implements UserServiceInterface {
       orders: []
     });
 
-    this.currentUser = this.userList.get("dz.com"); // TODO: remove
+    this.userList.set("dimicc.k@gmail.com", {
+      firstname: "Katarina",
+      lastname: "Dimic",
+      email: "dimicc.k@gmail.com",
+      address: "Bulevar Oslobodjenja 678/90",
+      cart: {
+          products: [],
+          price: 0
+      },
+      phone: "+3817894562",
+      password: "123",
+      admin: true,
+      createdAt: new Date(),
+      orders: []
+    });
+
+    this.currentUser = this.userList.get("dimitrijezdravkovic20@gmail.com"); // TODO: remove
   }
 
   protected userLoggedIn: boolean = true; // TODO: change to false

@@ -50,3 +50,23 @@ input {
 .max-width-400 {
     max-width: 400px;
 }
+
+td input {
+    min-width: 300px;
+}
+
+.my-profile {
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 664px) {
+        margin-left: 0;
+        margin-right: 0px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 636px) {
+    .custom-padding {
+        padding-right: 40px;
+    }
+}

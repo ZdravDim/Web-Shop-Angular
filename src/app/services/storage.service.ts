@@ -133,8 +133,8 @@ export class StorageService implements StorageServiceInterface {
     this.addProductToStorage(8, Size.XL, 1);
     this.addProductToStorage(9, Size.L, 1);
 
-    this.createProductReview("dz.com", 0, 5, "Some random review");  
-    this.createProductReview("dz.com", 0, 4, "Another random review");
+    this.createProductReview("dimitrijezdravkovic20@gmail.com", 0, 5, "Some random review");  
+    this.createProductReview("dimitrijezdravkovic20@gmail.com", 0, 4, "Another random review");
   }
 
   getAllProducts(): ProductStorageInterface[] {

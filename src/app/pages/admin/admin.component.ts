@@ -9,6 +9,4 @@ import { RouterModule } from '@angular/router';
   styleUrl: './admin.component.scss'
 })
 
-export class AdminComponent {
-
-}
+export class AdminComponent {}

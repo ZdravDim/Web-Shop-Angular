@@ -1,1 +1,26 @@
-<p>admin-orders works!</p>
+<div class="container p-3">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">email</th>
+                    <th scope="col">firstname</th>
+                    <th scope="col">lastname</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of userService.getUserList().values()" (click)="selectedUser = user" class="tr">
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <div class="col border">
+            {{ selectedUser.cart.price }} {{ selectedUser.email }}
+        </div>
+    </div>
+</div>
