@@ -3,6 +3,10 @@
     background-color: rgb(223, 223, 223);
 }
 
+table {
+    min-width: 500px;
+}
+
 @media screen and (max-width: 500px) {
     .hide-sm {
         display: none;
