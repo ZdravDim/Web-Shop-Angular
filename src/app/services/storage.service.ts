@@ -41,7 +41,7 @@ export class StorageService implements StorageServiceInterface {
       storage: [0, 0, 0, 0, 0, 0]
     })
 
-    // TODO: save image to /assets/products folder
+    // TODO: save image to assets/products folder
 
     if (!this.manifacturerExists(manifacturer)) {
       this.manifacturerList.push(manifacturer);
