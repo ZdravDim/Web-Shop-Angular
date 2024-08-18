@@ -41,7 +41,7 @@ export class StorageService implements StorageServiceInterface {
       storage: [0, 0, 0, 0, 0, 0]
     })
 
-    // TODO: save image to /assets/products folder
+    // TODO: save image to assets/products folder
 
     if (!this.manifacturerExists(manifacturer)) {
       this.manifacturerList.push(manifacturer);
@@ -133,8 +133,8 @@ export class StorageService implements StorageServiceInterface {
     this.addProductToStorage(8, Size.XL, 1);
     this.addProductToStorage(9, Size.L, 1);
 
-    this.createProductReview("dz.com", 0, 5, "Some random review");  
-    this.createProductReview("dz.com", 0, 4, "Another random review");
+    this.createProductReview("dimitrijezdravkovic20@gmail.com", 0, 5, "Some random review");  
+    this.createProductReview("dimitrijezdravkovic20@gmail.com", 0, 4, "Another random review");
   }
 
   getAllProducts(): ProductStorageInterface[] {

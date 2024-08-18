@@ -16,7 +16,7 @@
             </ng-template>
 
             <div class="d-flex flex-row align-items-center">
-                <ngb-rating [max]="5" [starTemplate]="t" [rate]="productInfo!.rating" [disabled]="true" [readonly]="true" style="font-size: xx-large;" />
+                <ngb-rating [max]="5" [starTemplate]="t" [rate]="productInfo!.reviews.length > 0 ? productInfo!.rating : 0" [disabled]="true" [readonly]="true" style="font-size: xx-large;" />
                 <span class="mt-1 ms-1"> ({{ productInfo!.reviews.length }})</span>
             </div>
 

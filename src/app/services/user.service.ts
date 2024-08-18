@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserInterface, UserServiceInterface } from '../interfaces/user';
-import { ProductInterface } from '../interfaces/product';
-import { Size } from '../enums/product';
+import { Category, Gender, Size } from '../enums/product';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +9,47 @@ import { Size } from '../enums/product';
 export class UserService implements UserServiceInterface {
 
   constructor() {
-    this.userList.set("dz.com", {
+    this.userList.set("dimitrijezdravkovic20@gmail.com", {
       firstname: "Dimitrije",
       lastname: "Zdravkovic",
-      email: "dz.com",
+      email: "dimitrijezdravkovic20@gmail.com",
       address: "Some Address 123",
       cart: {
-          products: [],
-          price: 0
+          products: [
+            {
+              product: {
+                id: 1,
+                name: 'testing',
+                price: 23.5,
+                category: Category.CASUAL,
+                gender: Gender.MEN,
+                manufacturer: 'ZARA',
+                imagePath: 'assets/products/about.png',
+                description: 'description',
+                reviews: [],
+                rating: 3.2,
+                createdAt: new Date()
+              },
+              size: Size.M,
+            },
+            {
+              product: {
+                id: 2,
+                name: 'testing2',
+                price: 14.4,
+                category: Category.CASUAL,
+                gender: Gender.MEN,
+                manufacturer: 'ZARA',
+                imagePath: 'assets/products/about.png',
+                description: 'description',
+                reviews: [],
+                rating: 4.1,
+                createdAt: new Date()
+              },
+              size: Size.L,
+            }
+          ],
+          price: 67.2
       },
       phone: "+3812345678",
       password: "123",
@@ -26,7 +58,23 @@ export class UserService implements UserServiceInterface {
       orders: []
     });
 
-    this.currentUser = this.userList.get("dz.com"); // TODO: remove
+    this.userList.set("dimicc.k@gmail.com", {
+      firstname: "Katarina",
+      lastname: "Dimic",
+      email: "dimicc.k@gmail.com",
+      address: "Bulevar Oslobodjenja 678/90",
+      cart: {
+          products: [],
+          price: 0
+      },
+      phone: "+3817894562",
+      password: "123",
+      admin: true,
+      createdAt: new Date(),
+      orders: []
+    });
+
+    this.currentUser = this.userList.get("dimitrijezdravkovic20@gmail.com"); // TODO: remove
   }
 
   protected userLoggedIn: boolean = true; // TODO: change to false
