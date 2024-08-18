@@ -15,6 +15,7 @@ import { VisitorGuard } from './guards/visitor.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProductsComponent } from './pages/admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './pages/admin/admin-orders/admin-orders.component';
+import { OrderComponent } from './pages/admin/admin-orders/order/order.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent, canActivate: [VisitorGuard] },
@@ -32,7 +33,8 @@ export const routes: Routes = [
         { path: 'products/:id', component: ProductComponent },
         { path: 'admin', component: AdminComponent, canActivate: [AdminGuard], children: [
             { path: 'products', component: AdminProductsComponent },
-            { path: 'orders', component: AdminOrdersComponent }
+            { path: 'orders', component: AdminOrdersComponent },
+            { path: 'orders/:id', component: OrderComponent }
         ] }
     ]}
 ];

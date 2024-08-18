@@ -17,8 +17,8 @@ export class OrderService implements OrderServiceInterface {
   createOrder(): void {
     const newOrder: OrderInterface = {
       id: this.orderCnt++,
-      cart: this.userService.getCurrentUser().cart,
-      address: this.userService.getCurrentUser().address,
+      cart: JSON.parse(JSON.stringify(this.userService.getCurrentUser().cart)),
+      address: JSON.parse(JSON.stringify(this.userService.getCurrentUser().address)),
       status: OrderStatus.PROCESSING,
       createdAt: new Date()
     }

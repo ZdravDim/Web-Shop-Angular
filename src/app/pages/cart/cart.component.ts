@@ -8,7 +8,6 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { CartService } from '../../services/cart.service';
 import { RouterModule } from '@angular/router';
-import { OrderInterface } from '../../interfaces/order';
 import { OrderService } from '../../services/order.service';
 
 @Component({
