@@ -1,26 +1,34 @@
 <div class="container p-3">
     <div class="row">
-        <div class="col">
+        <div class="col order-2 order-lg-1">
             <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">email</th>
-                    <th scope="col">firstname</th>
-                    <th scope="col">lastname</th>
+                    <th scope="col" class="hide-sm">firstname</th>
+                    <th scope="col" class="hide-sm">lastname</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let user of userService.getUserList().values()" (click)="selectedUser = user" class="tr">
                     <td>{{ user.email }}</td>
-                    <td>{{ user.firstname }}</td>
-                    <td>{{ user.lastname }}</td>
+                    <td class="hide-sm">{{ user.firstname }}</td>
+                    <td class="hide-sm">{{ user.lastname }}</td>
                   </tr>
                 </tbody>
               </table>
         </div>
 
-        <div class="col border">
-            {{ selectedUser.cart.price }} {{ selectedUser.email }}
+        <div *ngIf="selectedUser.orders.length > 0; else noOrders" class="col border order-1 order-lg-2">
+            <div *ngFor="let order of selectedUser.orders">
+                {{ order.cart.price }} {{ order.createdAt.toLocaleDateString() }} {{ order.createdAt.toLocaleTimeString() }}
+            </div>
         </div>
+        
+        <ng-template #noOrders>
+            <div class="col border order-1 order-lg-2 d-flex align-items-center justify-content-center">
+                <span>User has no orders</span>
+            </div>
+        </ng-template>
     </div>
 </div>
