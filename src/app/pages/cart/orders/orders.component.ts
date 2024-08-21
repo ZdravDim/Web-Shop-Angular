@@ -22,22 +22,19 @@ export class OrdersComponent {
 
   statusColors: string[] = ['darkgoldenrod', 'green', 'red'];
 
-  constructor(orderService: OrderService) {
+  constructor(private orderService: OrderService) {
     this.orders = orderService.getAllOrders();
   }
 
-  updateStatus(order: OrderInterface) : void {
+  finishOrder(order: OrderInterface): void {
     order.status = OrderStatus.DELIVERED;
   }
-
-  cancelOrder(order: OrderInterface) : void {
-    order.status = OrderStatus.CANCELED;
+ 
+  cancelOrDelete(order: OrderInterface): void {
+    if (order.status === OrderStatus.PROCESSING) order.status = OrderStatus.CANCELED;
+    else this.orderService.deleteOrder(order);
   }
 
-  deleteOrder(order: OrderInterface) : void {
-    // ...
-  }
-  
   showReviewDialog(order: OrderInterface) : void {
     // ...
   }

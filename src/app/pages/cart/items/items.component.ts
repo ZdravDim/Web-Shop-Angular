@@ -24,7 +24,7 @@ export class ItemsComponent {
 
   constructor(userService: UserService, private cartService: CartService, private orderService: OrderService) {
     this.cart = userService.getCurrentUser().cart;
-    this.cartEmpty = this.cart.price === 0;
+    this.cartEmpty = this.cart.products.length === 0;
   }
 
   deleteItemFromCart(item: CartItemInterface): void {

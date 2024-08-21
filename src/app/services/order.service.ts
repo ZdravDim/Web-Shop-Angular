@@ -34,6 +34,25 @@ export class OrderService implements OrderServiceInterface {
     }
   }
 
+
+//   const index = this.currentUser!.cart.products.findIndex(p => p === item);
+
+//   if (index !== -1) {
+//     this.currentUser!.cart.products.splice(index, 1);
+//     this.currentUser!.cart.price -= item.product.price;
+//     this.storageService.addProductToStorage(item.product.id, item.size, 1); // return to storage
+//     return true;
+//   }
+//   return false;
+// }
+
+  deleteOrder(order: OrderInterface): void {
+    const index = this.userService.getCurrentUser().orders.findIndex(p => p === order);
+    if (index !== -1) {
+      this.userService.getCurrentUser().orders.splice(index, 1);
+    }
+  }
+
   createOrderReview(userEmail: string, orderId: number, rating: number, comment?: string): void {
     const orderReview: OrderReviewInterface = { 
       userEmail: userEmail,
