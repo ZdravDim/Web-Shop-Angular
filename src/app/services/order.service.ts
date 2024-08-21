@@ -46,4 +46,8 @@ export class OrderService implements OrderServiceInterface {
     this.userService.getUserList().get(userEmail)!.orders.find(order => order.id == orderId)!.review = orderReview;
   }
 
+  getAllOrders(): OrderInterface[] {
+    return this.userService.getCurrentUser().orders;
+  }
+
 }

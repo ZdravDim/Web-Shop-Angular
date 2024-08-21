@@ -22,8 +22,22 @@
           <input class="form-control me-2" type="search" placeholder="Find a product" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <a routerLink="/cart" routerLinkActive="active"><i class="bi bi-cart mx-3 mt-2 h4 text-secondary"></i></a>
-        <a routerLink="/profile" routerLinkActive="active"><i class="bi bi-person me-2 mt-25 h3 text-secondary"></i></a>
+        <a routerLink="/cart" routerLinkActive="active">
+          <mat-icon
+            class="ms-3 mt-2 icon-color icon-zoom"
+            [matBadge]="cart.products.length"
+            matBadgePosition="above after"
+            matBadgeColor="warn"
+            matBadgeSize="small"
+            matBadgeHidden="{{cart.products.length === 0}}">
+            shopping_cart
+          </mat-icon>
+        </a>
+        
+        <a routerLink="/profile" routerLinkActive="active">
+          <mat-icon class="mx-2 mt-25 icon-color icon-zoom">person</mat-icon>
+        </a>
+        
       </div>
     </div>
   </nav>

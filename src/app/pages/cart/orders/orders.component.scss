@@ -1,0 +1,36 @@
+.col-12{
+    text-align: left; 
+}
+
+.custom-border {
+    border-right: 1px solid rgb(189, 189, 189);
+}
+
+@media (min-width: 768px) {
+    .col-12 {
+        text-align: center;
+    }
+
+    .custom-border {
+        border: none;
+        border-bottom: 1px solid rgb(189, 189, 189);
+    }
+
+    .details div:hover {
+        background-color: rgb(232, 232, 232) !important;
+    }
+}
+
+.labels .col-12 {
+    font-weight: bolder;
+    color: rgb(91, 105, 95) !important;
+}
+
+.details div {
+    cursor: pointer;
+    &:hover {
+        span {
+            font-weight: bolder;
+        }
+    }
+}

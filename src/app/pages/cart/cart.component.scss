@@ -1,12 +1,5 @@
-.custom-bg {
-    background-color: rgba(239, 239, 239, 0.721);
-
+.tab {
     &:hover {
-        background-color: rgba(215, 215, 215, 0.806);
+        background-color: rgb(236, 236, 236);
     }
-}
-
-a {
-    color: black !important;
-    text-decoration: none;
 }

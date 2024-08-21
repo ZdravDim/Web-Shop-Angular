@@ -1,0 +1,61 @@
+<div class="border container-fluid mt-4 d-flex pe-0" *ngFor="let order of orders">
+    <div class="row w-100">
+        <div class="ps-2 ps-sm-5 ps-md-1 ps-lg-5 pt-2 col-12 col-md-10">
+            <div class="d-flex flex-md-column flex-row" style="flex: 1;">
+                <div class="flex-fill row labels">
+                    <div class="col-12 col-md-1">
+                        ID
+                    </div>
+                    <div class="col-12 col-md-2">
+                        DATE
+                    </div>
+                    <div class="col-12 col-md-4">
+                        ADDRESS
+                    </div>
+                    <div class="col-12 col-md-2">
+                        COST
+                    </div>
+                    <div class="col-12 col-md-3">
+                        STATUS
+                    </div>
+                </div>
+                <div class="flex-fill row mt-1">
+                    <div class="col-12 col-md-1">
+                        {{order.id}}
+                    </div>
+                    <div class="col-12 col-md-2">
+                        {{order.createdAt.toLocaleDateString()}}
+                    </div>
+                    <div class="col-12 col-md-4">
+                        {{order.address}}
+                    </div>
+                    <div class="col-12 col-md-2">
+                        {{order.cart.price}} EUR
+                    </div>
+                    <div class="col-12 col-md-3" [ngStyle]="{'color': statusColors[order.status]}">
+                        {{OrderStatus[order.status]}}
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        <div class="border bg-light details d-flex justify-content-end d-md-block col-12 col-md-2 py-1 pe-3 p-md-0">
+
+            <div class="text-center d-inline d-md-block custom-border p-1" *ngIf="order.status === 0" (click)="updateStatus(order)">
+                <span>Finish </span>
+            </div>
+            <div class="text-center d-inline d-md-block custom-border p-1" *ngIf="order.status === 1" (click)="showReviewDialog(order)">
+                <span>Review </span>
+            </div>
+            <div class="text-center d-inline d-md-block p-1" *ngIf="order.status === 0" (click)="cancelOrder(order)">
+                <span style="color: darkred;" *ngIf="order.status === 0"> Cancel</span>
+            </div>
+            <div class="text-center d-inline d-md-block p-1" *ngIf="order.status !== 0" (click)="deleteOrder(order)">
+                <span style="color: darkred;"> Delete</span>
+            </div>
+
+        </div>
+        
+    </div>
+   
+</div> 

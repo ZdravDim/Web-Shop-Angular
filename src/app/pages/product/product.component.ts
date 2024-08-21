@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductInterface } from '../../interfaces/product';
 import { StorageService } from '../../services/storage.service';
@@ -79,6 +79,7 @@ export class ProductComponent {
       this.sizeNotSelected = true;
       return;
     }
+    
     this.cartService.addToCart(this.productInfo!, this.selectedSize); 
     this.sizeNotSelected = false;
   }

@@ -1,0 +1,18 @@
+.custom-bg {
+    background-color: rgba(239, 239, 239, 0.721);
+
+    &:hover {
+        background-color: rgba(215, 215, 215, 0.806);
+    }
+}
+
+a {
+    color: black !important;
+    text-decoration: none;
+}
+
+.explore-link {
+    color: rgb(71, 71, 71) !important;
+    font-weight: bold !important;
+    text-decoration: underline;
+}

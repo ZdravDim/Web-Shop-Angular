@@ -54,7 +54,6 @@
                     <div class="form-group">
                         <textarea class="form-control" rows="3" placeholder="Write a comment..." [(ngModel)]="userComment"></textarea>
                         <div class="d-flex mx-auto mx-sm-0 w-25 mt-3 mb-1" style="min-width: 300px;">
-                            <button class="btn btn-outline-danger rounded me-2" (click)="clearReviewSection()">Cancel</button>
                             <button class="btn btn-outline-dark rounded" type="submit" name="comment" (click)="submitReview()">Submit</button>
                         </div>
                         <span class="text-danger mt-5" style="font-size: small;" *ngIf="emptyReviewFields">Please fill out every field!</span>

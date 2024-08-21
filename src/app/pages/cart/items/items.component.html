@@ -1,0 +1,57 @@
+<!-- <h2 class="ps-3 pb-2">My Shopping Cart</h2> -->
+
+<div *ngIf="cartEmpty" class="pb-3 d-flex justify-content-center align-items-center flex-column text-center mt-5">
+    <img src="assets/empty-cart.png" alt="Empty Cart" style="max-width: 150px;" class="img-fluid me-4">
+    <p class="fw-bold" style="font-size: larger;">Your cart is empty</p>
+    <span>Looks like you haven't made your choice yet...</span>
+    <a routerLink="/" routerLinkActive="active" class="explore-link">Explore products</a>
+</div>
+
+<div class="container-fluid my-4" *ngIf="!cartEmpty">
+    <div class="row"> 
+        <div class="col-md-7">
+            <div *ngFor="let item of cart.products" class="mb-3 custom-bg" >
+                <div class="d-flex align-items-center">
+                    <img [src]="item.product.imagePath" alt="{{item.product.name}}" style="width: 170px;">
+                    <div class="mx-3 w-100">
+                        <div class="d-flex justify-content-between w-100 pt-3">
+                            <a [routerLink]="['/products', item.product.id]">
+                                <h5 class="fw-bold">{{item.product.name}}</h5>
+                            </a>
+                            <div class="me-4">
+                            <span (click)="deleteItemFromCart(item)" style="cursor: pointer;">
+                                <mat-icon>delete_outline</mat-icon>
+                            </span>
+                            </div>
+                        </div>
+                        <h6 class="fw-bold mb-4">{{item.product.price}} EUR</h6>
+                        <span>{{item.product.manufacturer}} | {{Category[item.product.category]}}</span>
+                        <p>Size: {{item.size.toString()}}</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div> 
+        <div class="col-md-5 px-xl-5">
+            <div class="bg-dark text-light px-5 px-md-3 py-4">
+                <h4 class="pb-4 text-center">Finish your order</h4>
+                <div class="d-flex justify-content-between" style="font-size: medium;">
+                    <span>Cart value</span> 
+                    <span class="fw-bold">{{cart.price.toFixed(2)}} EUR</span>
+                </div>
+                <div class="d-flex justify-content-between" style="font-size: medium;">
+                    <span>Delivery</span> 
+                    <span class="fw-bold">4.99 EUR</span>
+                </div>
+                <div class="d-flex justify-content-between border-top mt-2 py-3" style="font-size: large;">
+                    <span>Total price</span> 
+                    <span class="fw-bold">{{(cart.price + 4.99).toFixed(2)}} EUR</span>
+                </div>
+
+                <div class="d-flex justify-content-center mt-3">
+                    <button class="btn btn-light px-5" (click)="createNewOrder()">Complete order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

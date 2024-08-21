@@ -16,6 +16,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProductsComponent } from './pages/admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './pages/admin/admin-orders/admin-orders.component';
 import { OrderComponent } from './pages/admin/admin-orders/order/order.component';
+import { ItemsComponent } from './pages/cart/items/items.component';
+import { OrdersComponent } from './pages/cart/orders/orders.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent, canActivate: [VisitorGuard] },
@@ -24,7 +26,10 @@ export const routes: Routes = [
         { path: '', component: HomeComponent },
         { path: 'contact', component: ContactComponent },
         { path: 'about', component: AboutComponent },
-        { path: 'cart', component: CartComponent, canActivate: [UserGuard] },
+        { path: 'cart', component: CartComponent, canActivate: [UserGuard], children: [
+            { path: '', component: ItemsComponent },
+            { path: 'orders', component: OrdersComponent }
+        ] },
         { path: 'profile', component: ProfileComponent, canActivate: [UserGuard] },
         { path: 'products', component: ProductsComponent, children: [
             { path: 'men', component: ProductsComponent },

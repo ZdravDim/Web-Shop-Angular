@@ -26,3 +26,15 @@
 .admin-link.active {
     color: #aa0000;
 }
+
+.icon-zoom {
+    transition: transform 0.2s ease-in-out; 
+    
+    &:hover {
+      transform: scale(1.2); 
+    }
+  }
+  
+  .icon-color {
+    color: rgb(70, 79, 69);
+  }
