@@ -1,3 +1,11 @@
+
+<div *ngIf="orders.length === 0" class="pb-3 d-flex justify-content-center align-items-center flex-column text-center mt-5">
+    <img src="assets/empty-order.png" style="max-width: 180px; opacity: 95%;" class="img-fluid">
+    <p class="fw-bold" style="font-size: larger;">You have no orders yet</p>
+    <span class="mb-1">Start shopping to place your first order</span>
+    <a routerLink="/" routerLinkActive="active" class="explore-link">Explore products</a>
+</div>
+
 <div class="border container-fluid mt-4 d-flex pe-0" *ngFor="let order of orders">
     <div class="row w-100">
         <div class="ps-2 ps-sm-5 ps-md-1 ps-lg-5 pt-2 col-12 col-md-10">
