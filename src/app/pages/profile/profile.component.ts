@@ -74,8 +74,7 @@ export class ProfileComponent {
       password: this.user.password,
       createdAt: this.user.createdAt,
       orders: this.user.orders,
-      cart: this.user.cart,
-      admin: this.user.admin
+      cart: this.user.cart
     }
 
     this.userService.updateUser(tempMail, this.user);
