@@ -3,3 +3,11 @@
     <router-outlet></router-outlet>
     <app-footer class="mt-auto"></app-footer>
 </div>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="toast-container position-static">
+        <div *ngFor="let productName of notificationProductNames">
+            <app-notification productName='{{ productName }}'></app-notification>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserInterface } from '../../interfaces/user';
+import { WebsiteComponent } from '../../website/website.component';
 
 @Component({
   selector: 'app-profile',
@@ -40,6 +41,7 @@ export class ProfileComponent {
 
   logOut(): void {
     this.userService.logOut();
+    WebsiteComponent.clearNotifications();
     this.router.navigate(['']);
   }
 

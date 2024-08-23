@@ -9,11 +9,12 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
+import { WebsiteComponent } from '../../website/website.component';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ CommonModule, NgbRatingModule, FormsModule ],
+  imports: [CommonModule, NgbRatingModule, FormsModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
@@ -75,13 +76,16 @@ export class ProductComponent {
   }
 
   addToCart(): void {
+
+    // TODO: what if user isnt logged in?
+
     if (this.selectedSize === null) {
       this.sizeNotSelected = true;
       return;
     }
     
-    this.cartService.addToCart(this.productInfo!, this.selectedSize); 
+    this.cartService.addToCart(this.productInfo!, this.selectedSize);
+    WebsiteComponent.pushNotification(this.productInfo!.name);
     this.sizeNotSelected = false;
   }
-
 }
