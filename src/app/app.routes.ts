@@ -10,12 +10,7 @@ import { SignupComponent } from './login-signup/signup/signup.component';
 import { WebsiteComponent } from './website/website.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { AdminGuard } from './guards/admin.guard';
 import { VisitorGuard } from './guards/visitor.guard';
-import { AdminComponent } from './pages/admin/admin.component';
-import { AdminProductsComponent } from './pages/admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './pages/admin/admin-orders/admin-orders.component';
-import { OrderComponent } from './pages/admin/admin-orders/order/order.component';
 import { ItemsComponent } from './pages/cart/items/items.component';
 import { OrdersComponent } from './pages/cart/orders/orders.component';
 
@@ -35,11 +30,6 @@ export const routes: Routes = [
             { path: 'men', component: ProductsComponent },
             { path: 'women', component: ProductsComponent }
         ]},
-        { path: 'products/:id', component: ProductComponent },
-        { path: 'admin', component: AdminComponent, canActivate: [AdminGuard], children: [
-            { path: 'products', component: AdminProductsComponent },
-            { path: 'orders', component: AdminOrdersComponent },
-            { path: 'orders/:id', component: OrderComponent }
-        ] }
+        { path: 'products/:id', component: ProductComponent }
     ]}
 ];
