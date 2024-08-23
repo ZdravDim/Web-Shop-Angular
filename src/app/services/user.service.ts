@@ -15,41 +15,8 @@ export class UserService implements UserServiceInterface {
       email: "dimitrijezdravkovic20@gmail.com",
       address: "Some Address 123",
       cart: {
-          products: [
-            {
-              product: {
-                id: 1,
-                name: 'testing',
-                price: 23.5,
-                category: Category.CASUAL,
-                gender: Gender.MEN,
-                manufacturer: 'ZARA',
-                imagePath: 'assets/products/about.png',
-                description: 'description',
-                reviews: [],
-                rating: 3.2,
-                createdAt: new Date()
-              },
-              size: Size.M,
-            },
-            {
-              product: {
-                id: 2,
-                name: 'testing2',
-                price: 14.4,
-                category: Category.CASUAL,
-                gender: Gender.MEN,
-                manufacturer: 'ZARA',
-                imagePath: 'assets/products/about.png',
-                description: 'description',
-                reviews: [],
-                rating: 4.1,
-                createdAt: new Date()
-              },
-              size: Size.L,
-            }
-          ],
-          price: 67.2
+          products: [],
+          price: 0
       },
       phone: "+3812345678",
       password: "123",
