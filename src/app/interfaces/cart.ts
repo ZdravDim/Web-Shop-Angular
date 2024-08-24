@@ -2,12 +2,12 @@ import { Size } from "../enums/product";
 import { ProductInterface } from "./product";
 
 export interface CartItemInterface {
-    product: ProductInterface;
+    productInfo: ProductInterface;
     size: Size;
 }
 
 export interface CartInterface {
-    products: CartItemInterface[]; 
+    productList: CartItemInterface[]; 
     price: number;
 }
 

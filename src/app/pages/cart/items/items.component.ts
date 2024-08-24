@@ -24,12 +24,12 @@ export class ItemsComponent {
 
   constructor(userService: UserService, private cartService: CartService, private orderService: OrderService) {
     this.cart = userService.getCurrentUser().cart;
-    this.cartEmpty = this.cart.products.length === 0;
+    this.cartEmpty = this.cart.productList.length === 0;
   }
 
   deleteItemFromCart(item: CartItemInterface): void {
     this.cartService.removeFromCart(item);
-    this.cartEmpty = this.cart.products.length === 0;
+    this.cartEmpty = this.cart.productList.length === 0;
   }
 
   createNewOrder(): void {

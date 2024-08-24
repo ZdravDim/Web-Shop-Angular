@@ -11,11 +11,11 @@ export class StorageService implements StorageServiceInterface {
 
   constructor() {}
 
-  private productCnt: number = 0;
+  protected productCnt: number = 0;
 
-  private manifacturerList: string[] = [];
+  protected manifacturerList: string[] = [];
   
-  private storage: StorageInterface = {
+  protected storage: StorageInterface = {
     products: []
   }
 

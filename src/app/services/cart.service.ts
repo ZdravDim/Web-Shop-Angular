@@ -18,28 +18,28 @@ export class CartService implements CartServiceInterface {
    }
 
   addToCart(product: ProductInterface, size: Size): void {
-    this.currentUser!.cart.products.push({product, size});
+    this.currentUser!.cart.productList.push({productInfo: product, size});
     this.currentUser!.cart.price += product.price;
     this.storageService.reserveProduct(product.id, size);
   }
 
   removeFromCart(item: CartItemInterface): boolean {
-    const index = this.currentUser!.cart.products.findIndex(p => p === item);
+    const index = this.currentUser!.cart.productList.findIndex(p => p === item);
 
     if (index !== -1) {
-      this.currentUser!.cart.products.splice(index, 1);
-      this.currentUser!.cart.price -= item.product.price;
-      this.storageService.addProductToStorage(item.product.id, item.size, 1); // return to storage
+      this.currentUser!.cart.productList.splice(index, 1);
+      this.currentUser!.cart.price -= item.productInfo.price;
+      this.storageService.addProductToStorage(item.productInfo.id, item.size, 1); // return to storage
       return true;
     }
     return false;
   }
 
   emptyCart(): void {
-    for (let item of this.currentUser.cart.products) 
-      this.storageService.addProductToStorage(item.product.id, item.size, 1);
+    for (let item of this.currentUser.cart.productList) 
+      this.storageService.addProductToStorage(item.productInfo.id, item.size, 1);
 
-    this.currentUser!.cart.products = [];
+    this.currentUser!.cart.productList = [];
     this.currentUser!.cart.price = 0;
   }
 

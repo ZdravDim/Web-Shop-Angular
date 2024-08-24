@@ -33,7 +33,7 @@ export class SignupComponent {
     updatedAt: undefined,
     orders: [],
     cart: {
-      products: [],
+      productList: [],
       price: 0
     }
   }
