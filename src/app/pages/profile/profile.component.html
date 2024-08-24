@@ -8,30 +8,33 @@
     <div class="col-sm d-flex custom-padding">
       <div *ngIf="currentSection === 'profile'" class="my-profile">
         <h2 class="mb-2 mb-sm-5 fw-bold text-center text-sm-start">PROFILE INFO</h2>
-        <table class="table mx-auto mx-sm-0 mt-3 mt-sm-5 w-75" style="max-width: 900px;">
-          <tbody>
-            <tr>
-              <td>FIRST NAME</td>
-              <td><input #firstname value="{{user.firstname}}" [disabled]="!updatesEnabled"></td>
-            </tr>
-            <tr>
-              <td>LAST NAME</td>
-              <td><input #lastname value="{{user.lastname}}" [disabled]="!updatesEnabled"></td>
-            </tr>
-            <tr>
-              <td>EMAIL</td>
-              <td><input #email value="{{user.email}}" [disabled]="!updatesEnabled"></td>
-            </tr>
-            <tr>
-              <td>PHONE NUMBER</td>
-              <td><input #phone value="{{user.phone}}" [disabled]="!updatesEnabled"></td>
-            </tr>
-            <tr>
-              <td>ADDRESS</td>
-              <td><input #address value="{{user.address}}" [disabled]="!updatesEnabled"></td>
-            </tr>
-          </tbody>
-        </table>
+        <form class="was-validated">
+          <table class="table mx-auto mx-sm-0 mt-3 mt-sm-5 w-75" style="max-width: 900px;">
+            <tbody>
+              <tr>
+                <td>FIRST NAME</td>
+                <td><input #firstname value="{{user.firstname}}" [disabled]="!updatesEnabled" required></td>
+              </tr>
+              <tr>
+                <td>LAST NAME</td>
+                <td><input #lastname value="{{user.lastname}}" [disabled]="!updatesEnabled"></td>
+              </tr>
+              <tr>
+                <td>EMAIL</td>
+                <td><input #email value="{{user.email}}" [disabled]="!updatesEnabled"></td>
+              </tr>
+              <tr>
+                <td>PHONE NUMBER</td>
+                <td><input #phone value="{{user.phone}}" [disabled]="!updatesEnabled"></td>
+              </tr>
+              <tr>
+                <td>ADDRESS</td>
+                <td><input #address value="{{user.address}}" [disabled]="!updatesEnabled"></td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+        <p *ngIf="someFieldsAreEmpty" class="text-danger">Some fields are empty.</p>
         <div class="d-flex justify-content-start max-width-400 mx-auto mx-sm-0" *ngIf="updatesEnabled">
           <button class="btn btn-outline-danger me-2" (click)="cancelUpdate()">Cancel</button>
           <button class="btn btn-outline-dark" (click)="applyUpdates()" type="submit">Apply changes</button>
@@ -62,11 +65,10 @@
         </div>
         
         <p *ngIf="someFieldsAreEmpty" class="text-danger">Please fill every field.</p>
-        <p *ngIf="passwordNotMatching" class="text-danger">Passwords not matching!</p>
+        <p *ngIf="passwordNotMatching" class="text-danger">Old password is wrong!</p>
         <p *ngIf="passwordChanged" class="text-success">Passwords successfully changed!</p>
   
         <div class="d-flex justify-content-start">
-          <button class="btn btn-outline-danger me-2" (click)="cancel()">Cancel</button>
           <button class="btn btn-outline-dark" (click)="resetPassword()" type="submit">Confirm</button>
         </div>
       </div>

@@ -40,10 +40,6 @@ export class OrdersComponent {
     else this.orderService.deleteOrder(order);
   }
 
-  deleteItemFromCart(order: OrderInterface, item: CartItemInterface): void {
-    // ...
-  }
-
   showReviewDialog(order: OrderInterface) : void {
     // ...
   }

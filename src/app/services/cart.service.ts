@@ -29,7 +29,7 @@ export class CartService implements CartServiceInterface {
     if (index !== -1) {
       this.currentUser!.cart.productList.splice(index, 1);
       this.currentUser!.cart.price -= item.productInfo.price;
-      this.storageService.addProductToStorage(item.productInfo.id, item.size, 1); // return to storage
+      this.storageService.addProductToStorage(item.productInfo.id, item.size, 1);
       return true;
     }
     return false;

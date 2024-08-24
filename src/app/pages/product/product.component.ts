@@ -76,9 +76,6 @@ export class ProductComponent {
   }
 
   addToCart(): void {
-
-    // TODO: what if user isnt logged in?
-
     if (this.selectedSize === null) {
       this.sizeNotSelected = true;
       return;
