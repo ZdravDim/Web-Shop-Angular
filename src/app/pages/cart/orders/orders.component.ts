@@ -6,17 +6,22 @@ import { OrderInterface } from '../../../interfaces/order';
 import { OrderService } from '../../../services/order.service';
 import { MatTableModule } from '@angular/material/table';
 import { OrderStatus } from '../../../enums/order';
+import { MatDividerModule } from '@angular/material/divider';
+import { Category } from '../../../enums/product';
+import { CartItemInterface } from '../../../interfaces/cart';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [ MatIconModule, CommonModule, RouterModule, MatTableModule ],
+  imports: [ MatIconModule, CommonModule, RouterModule, MatDividerModule ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })
 export class OrdersComponent {
 
   OrderStatus = OrderStatus;
+  Category = Category;
+
   orders: OrderInterface[];
   selectedOrder?: OrderInterface = undefined;
 
@@ -33,6 +38,10 @@ export class OrdersComponent {
   cancelOrDelete(order: OrderInterface): void {
     if (order.status === OrderStatus.PROCESSING) order.status = OrderStatus.CANCELED;
     else this.orderService.deleteOrder(order);
+  }
+
+  deleteItemFromCart(order: OrderInterface, item: CartItemInterface): void {
+    // ...
   }
 
   showReviewDialog(order: OrderInterface) : void {

@@ -8,7 +8,7 @@
 
 <div class="custom-padding p-2">
     
-<div class="border container mt-4 pe-0" *ngFor="let order of orders">
+<div class="border container mt-4 px-0 bg-order" *ngFor="let order of orders">
     <div class="row">
         <div class="ps-2 ps-sm-5 ps-md-1 ps-lg-5 py-2 col-12 col-md-11">
             <div class="d-flex flex-md-column flex-row">
@@ -49,13 +49,36 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-end d-md-block pe-3 pb-4 pb-md-0 pt-md-4 col-12 col-md-1">
-            <mat-icon *ngIf="order.status === 0" (click)="finishOrder(order)" class="d-inline done-icon">done_all</mat-icon>
-            <mat-icon (click)="cancelOrDelete(order)" class="delete-icon d-inline"> 
+        <div class="d-flex justify-content-end d-md-block pe-3 pb-4 pb-md-0 pt-md-2 col-12 col-md-1">
+            <mat-icon *ngIf="order.status === 0" (click)="finishOrder(order)" class="d-inline d-md-block done-icon">done_all</mat-icon>
+            <mat-icon (click)="cancelOrDelete(order)" class="delete-icon d-inline d-md-block pt-md-1"> 
                 {{ order.status === 0 ? 'close' : 'delete_outline' }}
             </mat-icon>
         </div>
         
+    </div>
+    <mat-divider></mat-divider>
+    <div class="container-fluid px-5 mx-0 mt-3">
+        <div *ngFor="let item of order.cart.products" class="mb-3 bg-white border d-flex" style="font-size: small;">
+
+            <img [src]="item.product.imagePath" alt="{{item.product.name}}" style="width: 100px;">
+            <div class="mx-3 w-100">
+                <div class="d-flex justify-content-between w-100 pt-3">
+                    <a [routerLink]="['/products', item.product.id]">
+                        <h5 class="fw-bold">{{item.product.name}}</h5>
+                    </a>
+                    <div class="me-4">
+                    <span (click)="deleteItemFromCart(order, item)" style="cursor: pointer;">
+                        <mat-icon>delete_outline</mat-icon>
+                    </span>
+                    </div>
+                </div>
+                <h6 class="fw-bold mb-4">{{item.product.price}} EUR</h6>
+                <span>{{item.product.manufacturer}} | {{Category[item.product.category]}}</span>
+                <p>Size: {{item.size.toString()}}</p>
+            </div>
+
+        </div>
     </div>
    
 </div> 
