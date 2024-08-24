@@ -22,5 +22,5 @@ export interface UserServiceInterface {
     isUserLoggedIn(): boolean;
     logOut(): void;
     getUserList(): Map<string, UserInterface>;
-    currentUserOrderedProdut(productId: number): boolean;
+    currentUserRecievedProduct(productId: number): boolean;
 }

@@ -153,6 +153,8 @@ export class StorageService implements StorageServiceInterface {
     this.addProductToStorage(8, Size.XL, 1);
     this.addProductToStorage(9, Size.L, 1);
 
+    this.addProductToStorage(10, Size.L, 1);
+
     this.createProductReview("dimitrijezdravkovic20@gmail.com", 0, 5, `There are many variations of passages of Lorem Ipsum available, 
       but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly 
       believable.`);  
