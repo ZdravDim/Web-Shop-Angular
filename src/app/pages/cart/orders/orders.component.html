@@ -76,11 +76,6 @@
                     <a [routerLink]="['/products', item.productInfo.id]">
                         <h5 class="fw-bold">{{item.productInfo.name}}</h5>
                     </a>
-                    <div class="me-4">
-                    <span (click)="deleteItemFromCart(order, item)" style="cursor: pointer;">
-                        <mat-icon>delete_outline</mat-icon>
-                    </span>
-                    </div>
                 </div>
                 <h6 class="fw-bold mb-4">{{item.productInfo.price}} EUR</h6>
                 <span>{{item.productInfo.manufacturer}} | {{Category[item.productInfo.category]}}</span>

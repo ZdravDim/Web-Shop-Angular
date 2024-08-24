@@ -50,10 +50,14 @@ export class ProfileComponent {
   }
 
   showSection(section: string) {
+    this.someFieldsAreEmpty = this.passwordNotMatching = this.passwordChanged = false;
     this.currentSection = section;
   }
 
   cancelUpdate(): void {
+
+    this.someFieldsAreEmpty = false;
+
     this.firstname.nativeElement.value = this.user.firstname;
     this.lastname.nativeElement.value = this.user.lastname;
     this.email.nativeElement.value = this.user.email;
@@ -64,7 +68,14 @@ export class ProfileComponent {
   }
 
   applyUpdates(): void {
-    // TODO: handle empty fields and errors
+    
+    this.someFieldsAreEmpty = false;
+
+    if (this.firstname.nativeElement.value === "" || this.lastname.nativeElement.value === "" || this.email.nativeElement.value === "" || this.phone.nativeElement.value === "" || this.address.nativeElement.value === "") {
+      this.someFieldsAreEmpty = true;
+      return;
+    }
+
     const tempMail = this.email.nativeElement.value;
 
     this.user = {
@@ -84,10 +95,6 @@ export class ProfileComponent {
     this.updatesEnabled = false;
   }
 
-  cancel(): void {
-
-  }
-
   resetPassword() {
     this.someFieldsAreEmpty = this.passwordNotMatching = this.passwordChanged = false;
 
@@ -98,7 +105,7 @@ export class ProfileComponent {
     
     if (this.userService.getCurrentUser().password === this.oldPassword) {
       this.userService.getCurrentUser().password = this.newPassword;
-      // success notification
+      this.passwordChanged = true;
     } else this.passwordNotMatching = true;
   }
 }
