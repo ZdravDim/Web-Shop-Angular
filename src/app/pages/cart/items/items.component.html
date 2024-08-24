@@ -1,7 +1,10 @@
-<!-- <h2 class="ps-3 pb-2">My Shopping Cart</h2> -->
-
 <div *ngIf="cartEmpty" class="pb-3 d-flex justify-content-center align-items-center flex-column text-center mt-5">
-    <img src="assets/empty-cart.png" alt="Empty Cart" style="max-width: 150px;" class="img-fluid me-4">
+
+    <picture>
+        <source srcset="assets/empty-cart.webp" type="image/webp" style="max-width: 150px;" class="img-fluid me-4">
+        <img src="assets/empty-cart.png" alt="Empty Cart" style="max-width: 150px;" class="img-fluid me-4">
+    </picture>
+
     <p class="fw-bold" style="font-size: larger;">Your cart is empty</p>
     <span>Looks like you haven't made your choice yet...</span>
     <a routerLink="/" routerLinkActive="active" class="explore-link">Explore products</a>
@@ -12,7 +15,12 @@
         <div class="col-md-7">
             <div *ngFor="let item of cart.productList" class="mb-3 custom-bg" >
                 <div class="d-flex align-items-center">
-                    <img [src]="item.productInfo.imagePath" alt="{{item.productInfo.name}}" style="width: 170px;">
+                    
+                    <picture>
+                        <source [srcset]="item.productInfo.imagePath + '.webp'" type="image/webp" style="width: 170px;">
+                        <img [src]="item.productInfo.imagePath + '.png'" alt="{{item.productInfo.name}}" style="width: 170px;">
+                    </picture>
+
                     <div class="mx-3 w-100">
                         <div class="d-flex justify-content-between w-100 pt-3">
                             <a [routerLink]="['/products', item.productInfo.id]">
