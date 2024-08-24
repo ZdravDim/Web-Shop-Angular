@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserInterface, UserServiceInterface } from '../interfaces/user';
 import { OrderInterface } from '../interfaces/order';
+import { OrderStatus } from '../enums/order';
 
 @Injectable({
   providedIn: 'root'
@@ -85,11 +86,11 @@ export class UserService implements UserServiceInterface {
     return this.userList;
   }
 
-  currentUserOrderedProdut(productId: number): boolean {
+  currentUserRecievedProduct(productId: number): boolean {
     if (this.userLoggedIn) {
       const orders: OrderInterface[] = this.currentUser!.orders;
       for (const order of orders) {
-        if (order.cart.productList.find(product => product.productInfo.id === productId)) {
+        if (order.status == OrderStatus.DELIVERED && order.cart.productList.find(product => product.productInfo.id === productId)) {
           return true;
         }
       }

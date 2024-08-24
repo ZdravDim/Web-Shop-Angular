@@ -46,7 +46,7 @@
     
     <div class="row d-flex flex-column align-items-center mt-3">
         <div class="col-12 review">
-            <div class="p-3 w-100" *ngIf="true || userService.currentUserOrderedProdut(productId!)"> 
+            <div class="p-3 w-100" *ngIf="userService.currentUserRecievedProduct(productId!)"> 
                 <div id="rate-div" class="border border-success rounded w-100 p-3">
 
                     <div class="w-100 mb-1">
@@ -61,7 +61,7 @@
                         </i>
                     </ng-template>
 
-                    <ngb-rating [max]="5" [starTemplate]="t2" [(rate)]="userRating"  />
+                    <ngb-rating [max]="5" [starTemplate]="t2" [(rate)]="userRating" />
                     
                     <div class="form-group mt-1">
                         <textarea class="form-control" rows="3" placeholder="Write a comment..." [(ngModel)]="userComment"></textarea>
