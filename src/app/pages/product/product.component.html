@@ -46,17 +46,24 @@
     
     <div class="row d-flex flex-column align-items-center mt-3">
         <div class="col-12 review">
-            <div class="p-3 w-100" *ngIf="userService.currentUserOrderedProdut(productId!)">
-                <div class="border border-success rounded w-100 p-3">
+            <div class="p-3 w-100" *ngIf="true || userService.currentUserOrderedProdut(productId!)"> 
+                <div id="rate-div" class="border border-success rounded w-100 p-3">
 
-                    <div class="w-100">
+                    <div class="w-100 mb-1">
                         <span class="d-block border-bottom pb-2" style="font-size: large; color: darkgreen;">Rate your experience!</span>
                     </div>
 
-                    <ngb-rating [max]="5" [(rate)]="userRating" style="font-size: xx-large;" />
-                    
+                    <ng-template #t2 let-fill="fill">
+                        <i class="bi-star-fill">
+                            @if (fill > 0) {
+                                <i class="bi-star-fill filled" [style.width.%]="fill"></i>
+                            }
+                        </i>
+                    </ng-template>
 
-                    <div class="form-group">
+                    <ngb-rating [max]="5" [starTemplate]="t2" [(rate)]="userRating"  />
+                    
+                    <div class="form-group mt-1">
                         <textarea class="form-control" rows="3" placeholder="Write a comment..." [(ngModel)]="userComment"></textarea>
                         <div class="d-flex mx-auto mx-sm-0 w-25 mt-3 mb-1" style="min-width: 300px;">
                             <button class="btn btn-outline-dark rounded" type="submit" name="comment" (click)="submitReview()">Submit</button>
@@ -72,7 +79,6 @@
             <div *ngFor="let review of productInfo?.reviews" class="p-3 d-flex flex-start w-100">
  
                 <div class="card w-100">
-                    
                     <div class="card-body px-4 pt-3">
                         <div class="d-flex justify-content-between">
                             <span class="text-success">{{ review.userEmail }}</span>
@@ -88,7 +94,7 @@
                         </ng-template>
 
                         <ngb-rating [max]="5" [starTemplate]="t3" [rate]="review.rating" [disabled]="true" [readonly]="true" style="font-size:medium;" />
-                        <p>{{ review.comment }}</p>
+                        <p style="max-width: none;">{{ review.comment }}</p>
                     </div>
                 </div>
             </div>
