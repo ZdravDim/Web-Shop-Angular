@@ -22,11 +22,11 @@
         <a routerLink="/cart" routerLinkActive="active">
           <mat-icon
             class="ms-3 mt-2 icon-color icon-zoom"
-            [matBadge]="cart.products.length"
+            [matBadge]="cart.productList.length"
             matBadgePosition="above after"
             matBadgeColor="warn"
             matBadgeSize="small"
-            matBadgeHidden="{{cart.products.length === 0}}">
+            matBadgeHidden="{{cart.productList.length === 0}}">
             shopping_cart
           </mat-icon>
         </a>

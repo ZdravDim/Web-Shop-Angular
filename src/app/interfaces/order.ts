@@ -15,5 +15,7 @@ export interface OrderInterface {
 export interface OrderServiceInterface {
   createOrder() : void;
   cancelOrder(orderId: number) : void;
+  deleteOrder(order: OrderInterface): void;
   createOrderReview(userEmail: string, orderId: number, rating: number, comment?: string): void;
+  getAllOrders(): OrderInterface[];
 }

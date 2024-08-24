@@ -18,5 +18,9 @@ export interface UserServiceInterface {
     signup(userData: UserInterface): boolean;
     login(email: string, password: string): boolean;
     updateUser(email: string, userData: UserInterface): boolean;
+    getCurrentUser(): UserInterface;
+    isUserLoggedIn(): boolean;
+    logOut(): void;
     getUserList(): Map<string, UserInterface>;
+    currentUserOrderedProdut(productId: number): boolean;
 }

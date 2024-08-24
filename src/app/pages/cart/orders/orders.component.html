@@ -59,13 +59,13 @@
     </div>
     <mat-divider></mat-divider>
     <div class="container-fluid px-5 mx-0 mt-3">
-        <div *ngFor="let item of order.cart.products" class="mb-3 bg-white border d-flex" style="font-size: small;">
+        <div *ngFor="let item of order.cart.productList" class="mb-3 bg-white border d-flex" style="font-size: small;">
 
-            <img [src]="item.product.imagePath" alt="{{item.product.name}}" style="width: 100px;">
+            <img [src]="item.productInfo.imagePath" alt="{{item.productInfo.name}}" style="width: 130px;">
             <div class="mx-3 w-100">
                 <div class="d-flex justify-content-between w-100 pt-3">
-                    <a [routerLink]="['/products', item.product.id]">
-                        <h5 class="fw-bold">{{item.product.name}}</h5>
+                    <a [routerLink]="['/products', item.productInfo.id]">
+                        <h5 class="fw-bold">{{item.productInfo.name}}</h5>
                     </a>
                     <div class="me-4">
                     <span (click)="deleteItemFromCart(order, item)" style="cursor: pointer;">
@@ -73,8 +73,8 @@
                     </span>
                     </div>
                 </div>
-                <h6 class="fw-bold mb-4">{{item.product.price}} EUR</h6>
-                <span>{{item.product.manufacturer}} | {{Category[item.product.category]}}</span>
+                <h6 class="fw-bold mb-4">{{item.productInfo.price}} EUR</h6>
+                <span>{{item.productInfo.manufacturer}} | {{Category[item.productInfo.category]}}</span>
                 <p>Size: {{item.size.toString()}}</p>
             </div>
 

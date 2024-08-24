@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserInterface, UserServiceInterface } from '../interfaces/user';
-import { Category, Gender, Size } from '../enums/product';
+import { OrderInterface } from '../interfaces/order';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class UserService implements UserServiceInterface {
       email: "dimitrijezdravkovic20@gmail.com",
       address: "Some Address 123",
       cart: {
-          products: [],
+          productList: [],
           price: 0
       },
       phone: "+3812345678",
@@ -30,7 +30,7 @@ export class UserService implements UserServiceInterface {
       email: "dimicc.k@gmail.com",
       address: "Bulevar Oslobodjenja 678/90",
       cart: {
-          products: [],
+          productList: [],
           price: 0
       },
       phone: "+3817894562",
@@ -39,10 +39,10 @@ export class UserService implements UserServiceInterface {
       orders: []
     });
 
-    this.currentUser = this.userList.get("dimitrijezdravkovic20@gmail.com"); // TODO: remove
+    this.currentUser = this.userList.get("dimitrijezdravkovic20@gmail.com");
   }
 
-  protected userLoggedIn: boolean = true; // TODO: change to false
+  protected userLoggedIn: boolean = true;
   
   protected currentUser?: UserInterface = undefined;
 
@@ -83,5 +83,17 @@ export class UserService implements UserServiceInterface {
 
   getUserList(): Map<string, UserInterface> {
     return this.userList;
+  }
+
+  currentUserOrderedProdut(productId: number): boolean {
+    if (this.userLoggedIn) {
+      const orders: OrderInterface[] = this.currentUser!.orders;
+      for (const order of orders) {
+        if (order.cart.productList.find(product => product.productInfo.id === productId)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
