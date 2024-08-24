@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserInterface } from '../../interfaces/user';
+import { WebsiteComponent } from '../../website/website.component';
 
 @Component({
   selector: 'app-profile',
@@ -40,6 +41,7 @@ export class ProfileComponent {
 
   logOut(): void {
     this.userService.logOut();
+    WebsiteComponent.clearNotifications();
     this.router.navigate(['']);
   }
 
@@ -74,8 +76,7 @@ export class ProfileComponent {
       password: this.user.password,
       createdAt: this.user.createdAt,
       orders: this.user.orders,
-      cart: this.user.cart,
-      admin: this.user.admin
+      cart: this.user.cart
     }
 
     this.userService.updateUser(tempMail, this.user);
