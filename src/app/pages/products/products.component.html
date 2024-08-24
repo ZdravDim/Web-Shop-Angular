@@ -154,7 +154,12 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             <div *ngFor="let item of getAvailableProducts()" class="col py-3">
                 <a [routerLink]="['/products', item.productInfo.id]" class="d-block border text-center zoom pb-1" style="border-color: rgb(216, 216, 216) !important;">
-                    <img [src] = "item.productInfo.imagePath" alt="failed to load image" class="img-fluid mb-2">
+                    
+                    <picture>
+                        <source [srcset]="item.productInfo.imagePath + '.webp'" type="image/webp" class="img-fluid mb-2">
+                        <img [src]="item.productInfo.imagePath + '.png'" alt="failed to load image" class="img-fluid mb-2">
+                    </picture>
+
                     <span>{{item.productInfo.name}}</span>
                     <span class="text-secondary">{{item.productInfo.manufacturer}}</span>
                     <p>{{item.productInfo.price}} €</p>

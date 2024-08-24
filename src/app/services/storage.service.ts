@@ -56,7 +56,7 @@ export class StorageService implements StorageServiceInterface {
       }
     }
 
-    productStorage.productInfo.imagePath += (imagePath ?? currentTimeStamp.toISOString() + ".png");
+    productStorage.productInfo.imagePath += (imagePath ?? currentTimeStamp.toISOString());
 
     this.storage.products.push(productStorage);
 
@@ -117,19 +117,19 @@ export class StorageService implements StorageServiceInterface {
       took a galley of type and scrambled it to make a type specimen book. It has survived not only five 
       centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`;
 
-    this.createNewProduct("LINEN SHIRT", 35.90, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "linen-shirt-zara.png");
-    this.createNewProduct("POLO T-SHIRT", 40.00, Category.WORK, Gender.MEN, "ZARA", productDescription, "polo-shirt-zara.png");
-    this.createNewProduct("BERMUDA SHORTS", 24.50, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "bermuda-shorts-zara.png");
-    this.createNewProduct("SHORT SLEEVE SHIRT", 35.65, Category.CASUAL, Gender.MEN, "NIKE", productDescription, "short-sleeve-tshirt-nike.png");
-    this.createNewProduct("RUNNING SET M", 109.99, Category.SPORTS, Gender.MEN, "NIKE", productDescription, "running-set-nike.png");
-    this.createNewProduct("CARGO PANTS", 29.99, Category.CASUAL, Gender.MEN, "H&M", productDescription, "cargo-pants-h&m.png");
+    this.createNewProduct("LINEN SHIRT", 35.90, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "linen-shirt-zara");
+    this.createNewProduct("POLO T-SHIRT", 40.00, Category.WORK, Gender.MEN, "ZARA", productDescription, "polo-shirt-zara");
+    this.createNewProduct("BERMUDA SHORTS", 24.50, Category.CASUAL, Gender.MEN, "ZARA", productDescription, "bermuda-shorts-zara");
+    this.createNewProduct("SHORT SLEEVE SHIRT", 35.65, Category.CASUAL, Gender.MEN, "NIKE", productDescription, "short-sleeve-tshirt-nike");
+    this.createNewProduct("RUNNING SET M", 109.99, Category.SPORTS, Gender.MEN, "NIKE", productDescription, "running-set-nike");
+    this.createNewProduct("CARGO PANTS", 29.99, Category.CASUAL, Gender.MEN, "H&M", productDescription, "cargo-pants-h&m");
 
-    this.createNewProduct("MIDI DRESS", 55.95, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "midi-dress-zara.png");
-    this.createNewProduct("RUNNING SET W", 109.99, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription, "midi-saten-skirt-zara.png");
-    this.createNewProduct("MIDI SATEN SKIRT", 25.99, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "running-set-nike.png");
-    this.createNewProduct("TEXAS SHORTS", 19.99, Category.CASUAL, Gender.WOMEN, "H&M", productDescription, "texas-shorts-h&m.png");
+    this.createNewProduct("MIDI DRESS", 55.95, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "midi-dress-zara");
+    this.createNewProduct("RUNNING SET W", 109.99, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription, "midi-saten-skirt-zara");
+    this.createNewProduct("MIDI SATEN SKIRT", 25.99, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "running-set-nike");
+    this.createNewProduct("TEXAS SHORTS", 19.99, Category.CASUAL, Gender.WOMEN, "H&M", productDescription, "texas-shorts-h&m");
 
-    this.createNewProduct("OVERSIZED T-SHIRT", 39.50, Category.CASUAL, Gender.UNISEX, "ADIDAS", productDescription, "oversized-tshirt-adidas.png");
+    this.createNewProduct("OVERSIZED T-SHIRT", 39.50, Category.CASUAL, Gender.UNISEX, "ADIDAS", productDescription, "oversized-tshirt-adidas");
 
 
     this.addProductToStorage(0, Size.S, 1);
