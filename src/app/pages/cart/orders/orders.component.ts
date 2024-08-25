@@ -50,7 +50,9 @@ export class OrdersComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      order.address = result;
+      if (result) {
+        order.address = result;
+      }
     });
   }
 
