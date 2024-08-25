@@ -47,6 +47,12 @@ a {
     }
 }
 
+.edit-icon {
+    &:hover {
+        color: rgb(36, 96, 165) !important;
+    }
+}
+
 .done-icon {
     &:hover {
         color: rgb(82, 172, 44) !important;
