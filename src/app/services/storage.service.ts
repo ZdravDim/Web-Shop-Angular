@@ -125,8 +125,8 @@ export class StorageService implements StorageServiceInterface {
     this.createNewProduct("CARGO PANTS", 29.99, Category.CASUAL, Gender.MEN, "H&M", productDescription, "cargo-pants-h&m");
 
     this.createNewProduct("MIDI DRESS", 55.95, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "midi-dress-zara");
-    this.createNewProduct("RUNNING SET W", 109.99, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription, "midi-saten-skirt-zara");
-    this.createNewProduct("MIDI SATEN SKIRT", 25.99, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "running-set-nike");
+    this.createNewProduct("RUNNING SET W", 109.99, Category.SPORTS, Gender.WOMEN, "NIKE", productDescription, "running-set-nike");
+    this.createNewProduct("MIDI SATEN SKIRT", 25.99, Category.FORMAL, Gender.WOMEN, "ZARA", productDescription, "midi-saten-skirt-zara");
     this.createNewProduct("TEXAS SHORTS", 19.99, Category.CASUAL, Gender.WOMEN, "H&M", productDescription, "texas-shorts-h&m");
 
     this.createNewProduct("OVERSIZED T-SHIRT", 39.50, Category.CASUAL, Gender.UNISEX, "ADIDAS", productDescription, "oversized-tshirt-adidas");

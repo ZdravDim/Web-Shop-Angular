@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Edit order information</h2>
+<mat-dialog-content class="pt-2 pb-1">
+    <mat-label class="me-3">Address</mat-label>
+    <input matInput [(ngModel)]="address" cdkFocusInitial />
+</mat-dialog-content>
+<span *ngIf="someFieldsAreEmpty" class="text-danger mx-auto">Some fields are empty</span>
+<mat-dialog-actions class="mx-auto">
+  <button mat-button (click)="close()">No Thanks</button>
+  <button mat-button (click)="changeAddress()">Ok</button>
+</mat-dialog-actions>
