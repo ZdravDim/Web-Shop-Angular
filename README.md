@@ -17,6 +17,7 @@
 
 ## Collaborators
 
+- [@ZdravDim](https://github.com/ZdravDim)
 - [@dimicck](https://github.com/dimicck)
 
 ## Project overview
