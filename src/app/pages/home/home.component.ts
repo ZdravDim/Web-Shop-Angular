@@ -82,8 +82,6 @@ export class HomeComponent {
       this.filteredProducts = this.filteredProducts.filter(product => manufacturersChecked.includes(product.productInfo.manufacturer));
     }
 
-    //...
-
     if (!anythingChecked) {
       this.filteredProducts = this.products;
     }
