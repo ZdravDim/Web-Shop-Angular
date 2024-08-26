@@ -1,7 +1,7 @@
 
 .form-container {
     width: 30%;
-    min-width: 300px;
+    min-width: 280px;
     padding: 30px;
     border: 1px solid;
     border-radius: 20px;
@@ -32,4 +32,14 @@ input {
 
 .signup-option {
     font-size: 0.85rem;
+}
+
+.signup-div {
+    margin-top: 500px !important;
+}
+
+@media (min-width: 768px) {
+    .signup-div {
+        margin-top: 50px !important;
+    }
 }

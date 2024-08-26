@@ -1,11 +1,11 @@
 
-<header class="fixed-top bg-dark text-white py-3">
+<div class="container-fluid position-fixed top-0 w-100 bg-dark p-2">
     <div class="container d-flex justify-content-between align-items-center">
-        <h1 class="mb-0">Welcome back to Web Shop!</h1>
+        <h1 class="mb-0 text-light h-5 h-md-1">Welcome back to Web Shop!</h1>
         <a class="bi bi-house-door fs-3 link-light" routerLink="/" routerLinkActive="active"></a> 
     </div>
-</header>
-<div class="mx-auto form-container text-center py-5">
+</div>
+<div class="mx-auto form-container text-center mt-3 py-5">
 
     <h4 class="text-center my-4 py-3 fw-bold">Log In</h4>
     <form #logInForm="ngForm" (ngSubmit)="onLogin(logInForm)">
