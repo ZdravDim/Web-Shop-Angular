@@ -31,5 +31,6 @@
 ![image](https://github.com/user-attachments/assets/3223e218-687f-49c0-a538-d2016fc1d236)
 
 ## Deployment (don't read)
+- Change `index.html`, to have this line: `<base href="/Web-Shop-Angular/">`
 - Add this line to `package.json`: `"homepage": "https://ZdravDim.github.io/"`
 - ng deploy --repo=https://github.com/ZdravDim/Web-Shop-Angular.git --name="ZdravDim"
