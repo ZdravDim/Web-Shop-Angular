@@ -32,6 +32,7 @@ export class HeaderComponent {
       }, 200);
       return;
     }
+    this.searchInput.nativeElement.value = '';
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/products'], { queryParams: { search: searchName } });
     });
