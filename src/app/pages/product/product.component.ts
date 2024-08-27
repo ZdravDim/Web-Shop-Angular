@@ -88,7 +88,7 @@ export class ProductComponent {
       return;
     }
     
-    this.cartService.addToCart(this.productInfo!,  Size[this.selectedSize as keyof typeof Size]);
+    this.cartService.addToCart(this.productInfo!, Size[this.selectedSize as keyof typeof Size]);
     WebsiteComponent.pushNotification(this.productInfo!.name);
     this.getAvailableSizes();
     this.sizeNotSelected = false;

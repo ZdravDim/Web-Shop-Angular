@@ -14,5 +14,4 @@ export interface CartInterface {
 export interface CartServiceInterface {
     addToCart(product: ProductInterface, size: Size): void;
     removeFromCart(product: CartItemInterface): boolean;
-    emptyCart() : void;
 }

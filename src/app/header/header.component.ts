@@ -21,4 +21,9 @@ export class HeaderComponent {
     this.cart = userService.getCurrentUser().cart;
   }
 
+  search() {
+    alert('Search');
+    
+  }
+
 }
