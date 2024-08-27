@@ -15,10 +15,10 @@
             <a class="nav-link" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Find a product" aria-label="Search">
+        <div class="d-flex">
+          <input #searchInput class="form-control me-2" type="search" placeholder="Find a product" aria-label="Search">
           <button class="btn btn-outline-success" (click)="search()">Search</button>
-        </form>
+        </div>
         <a routerLink="/cart" routerLinkActive="active">
           <mat-icon
             class="ms-3 mt-2 icon-color icon-zoom"
