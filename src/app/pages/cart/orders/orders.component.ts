@@ -6,7 +6,7 @@ import { OrderInterface } from '../../../interfaces/order';
 import { OrderService } from '../../../services/order.service';
 import { OrderStatus } from '../../../enums/order';
 import { MatDividerModule } from '@angular/material/divider';
-import { Category } from '../../../enums/product';
+import { Category, Size } from '../../../enums/product';
 import { EditOrderDialogComponent } from './edit-order-dialog/edit-order-dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +22,7 @@ export class OrdersComponent {
 
   OrderStatus = OrderStatus;
   Category = Category;
+  Size = Size;
 
   orders: OrderInterface[];
   selectedOrder?: OrderInterface = undefined;

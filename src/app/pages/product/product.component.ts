@@ -10,6 +10,8 @@ import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { WebsiteComponent } from '../../website/website.component';
+import { T } from '@angular/cdk/keycodes';
+import { StickyDirection } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-product',
@@ -26,9 +28,11 @@ export class ProductComponent {
   productId?: number;
   productInfo?: ProductInterface;
   availabilityMap: any = {};
+  availableSizes: string[] = [];
 
-  selectedSize: Size | null = null;
+  selectedSize: string | null = null;
   sizeNotSelected: boolean = false;
+  productNotAvailable: boolean = false;
   userRating: number = 0;
   userComment: string = '';
   emptyReviewFields: boolean = false;
@@ -39,7 +43,15 @@ export class ProductComponent {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.productId = +params.get('id')!;
       this.productInfo = this.storageService.getProductById(this.productId);
-      const productAvailability = this.storageService.getProductAvailability(this.productId);
+  
+      this.getAvailableSizes();
+
+    })
+  }
+
+  getAvailableSizes(): void {
+
+    const productAvailability = this.storageService.getProductAvailability(this.productId!);
 
       this.availabilityMap = {
         XS: productAvailability[0],
@@ -51,12 +63,7 @@ export class ProductComponent {
       };
 
       this.availabilityMap = Object.entries(this.availabilityMap);
-
-    })
-  }
-
-  getAvailableSizes(): string[] {
-    return this.availabilityMap.filter((size: any) => size[1] > 0).map((size: any) => size[0]);
+      this.availableSizes = this.availabilityMap.filter((size: any) => size[1] > 0).map((size: any) => size[0]);
   }
 
   submitReview(): boolean {
@@ -81,8 +88,12 @@ export class ProductComponent {
       return;
     }
     
-    this.cartService.addToCart(this.productInfo!, this.selectedSize);
+    this.cartService.addToCart(this.productInfo!,  Size[this.selectedSize as keyof typeof Size]);
     WebsiteComponent.pushNotification(this.productInfo!.name);
+    this.getAvailableSizes();
     this.sizeNotSelected = false;
+    if (this.availableSizes.length === 0) {
+      this.productNotAvailable = true;
+    }
   }
 }

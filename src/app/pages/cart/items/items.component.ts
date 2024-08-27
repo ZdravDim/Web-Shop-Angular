@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
-import { Category } from '../../../enums/product';
+import { Category, Size } from '../../../enums/product';
 import { CartInterface, CartItemInterface } from '../../../interfaces/cart';
 import { CartService } from '../../../services/cart.service';
 import { OrderService } from '../../../services/order.service';
@@ -21,6 +21,7 @@ export class ItemsComponent {
   cartEmpty: boolean;
   cart: CartInterface;
   Category = Category;
+  Size = Size;
 
   constructor(userService: UserService, private cartService: CartService, private orderService: OrderService) {
     this.cart = userService.getCurrentUser().cart;
