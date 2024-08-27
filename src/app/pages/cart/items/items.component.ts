@@ -9,6 +9,7 @@ import { OrderService } from '../../../services/order.service';
 import { UserService } from '../../../services/user.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-items',
@@ -23,7 +24,7 @@ export class ItemsComponent {
   Category = Category;
   Size = Size;
 
-  constructor(userService: UserService, private cartService: CartService, private orderService: OrderService) {
+  constructor(private userService: UserService, private cartService: CartService, private orderService: OrderService, private storageService: StorageService) {
     this.cart = userService.getCurrentUser().cart;
     this.cartEmpty = this.cart.productList.length === 0;
   }
@@ -35,7 +36,7 @@ export class ItemsComponent {
 
   createNewOrder(): void {
     this.orderService.createOrder();
-    this.cartService.emptyCart();
+    this.storageService.emptyCart(this.userService.getCurrentUser().cart);
     this.cartEmpty = true;
   }
 }

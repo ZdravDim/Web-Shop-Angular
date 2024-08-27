@@ -3,6 +3,7 @@ import { StorageInterface, StorageServiceInterface } from '../interfaces/storage
 import { Category, Gender, Size } from '../enums/product';
 import { ProductInterface, ProductStorageInterface } from '../interfaces/product';
 import { ProductReviewInterface } from '../interfaces/review';
+import { CartInterface } from '../interfaces/cart';
 
 @Injectable({
   providedIn: 'root'
@@ -183,5 +184,13 @@ export class StorageService implements StorageServiceInterface {
     const productToReview = this.storage.products.find(product => product.productInfo.id == productId)!.productInfo;
     productToReview.reviews.unshift(productReview);
     productToReview.rating = productToReview.reviews.reduce((acc, review) => acc + review.rating, 0) / productToReview.reviews.length;
+  }
+
+  emptyCart(cart: CartInterface): void {
+    for (let item of cart.productList) {
+      this.addProductToStorage(item.productInfo.id, item.size, 1);
+    }
+    cart.productList = [];
+    cart.price = 0;
   }
 }

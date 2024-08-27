@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserInterface, UserServiceInterface } from '../interfaces/user';
 import { OrderInterface } from '../interfaces/order';
 import { OrderStatus } from '../enums/order';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,43 +10,29 @@ import { OrderStatus } from '../enums/order';
 
 export class UserService implements UserServiceInterface {
 
-  constructor() {
-    this.userList.set("dimitrijezdravkovic20@gmail.com", {
-      firstname: "Dimitrije",
-      lastname: "Zdravkovic",
-      email: "dimitrijezdravkovic20@gmail.com",
-      address: "Some Address 123",
-      cart: {
-          productList: [],
-          price: 0
-      },
-      phone: "+3812345678",
-      password: "123",
-      createdAt: new Date(),
-      orders: []
-    });
+  private emptyUser: UserInterface = {
+    firstname: "",
+    lastname: "",
+    email: "",
+    address: "",
+    cart: {
+        productList: [],
+        price: 0
+    },
+    phone: "",
+    password: "",
+    createdAt: new Date(),
+    orders: []
+  };
 
-    this.userList.set("dimicc.k@gmail.com", {
-      firstname: "Katarina",
-      lastname: "Dimic",
-      email: "dimicc.k@gmail.com",
-      address: "Bulevar Oslobodjenja 678/90",
-      cart: {
-          productList: [],
-          price: 0
-      },
-      phone: "+3817894562",
-      password: "123",
-      createdAt: new Date(),
-      orders: []
-    });
-
-    this.currentUser = this.userList.get("dimitrijezdravkovic20@gmail.com");
+  constructor(private storageService: StorageService) {
+    this.currentUser = this.emptyUser;
+    this.userLoggedIn = false;
   }
 
-  protected userLoggedIn: boolean = true;
+  protected userLoggedIn: boolean;
   
-  protected currentUser?: UserInterface = undefined;
+  protected currentUser: UserInterface;
 
   protected userList: Map<string, UserInterface> = new Map<string, UserInterface>();
   
@@ -58,7 +45,8 @@ export class UserService implements UserServiceInterface {
   login(email: string, password: string): boolean {
     if (!this.userList.has(email)) return false;
     if (this.userList.get(email)!.password !== password) return false;
-    this.currentUser = this.userList.get(email);
+    this.currentUser = this.userList.get(email)!;
+    this.currentUser.cart = this.emptyUser.cart;
     this.userLoggedIn = true;
     return true;
   }
@@ -78,7 +66,8 @@ export class UserService implements UserServiceInterface {
   }
 
   logOut(): void {
-    this.currentUser = undefined;
+    this.storageService.emptyCart(this.currentUser.cart);
+    this.currentUser = this.emptyUser;
     this.userLoggedIn = false;
   }
 

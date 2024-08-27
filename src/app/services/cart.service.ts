@@ -35,12 +35,4 @@ export class CartService implements CartServiceInterface {
     return false;
   }
 
-  emptyCart(): void {
-    for (let item of this.currentUser.cart.productList) 
-      this.storageService.addProductToStorage(item.productInfo.id, item.size, 1);
-
-    this.currentUser!.cart.productList = [];
-    this.currentUser!.cart.price = 0;
-  }
-
 }

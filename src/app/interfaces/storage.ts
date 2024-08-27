@@ -1,4 +1,5 @@
 import { Category, Gender, Size } from "../enums/product";
+import { CartInterface } from "./cart";
 import { ProductInterface, ProductStorageInterface } from "./product";
 
 export interface StorageInterface {
@@ -16,4 +17,5 @@ export interface StorageServiceInterface {
     getAllProducts(): ProductStorageInterface[];
     getManufacturers(): string[];
     createProductReview(userEmail: string, productId: number, rating: number, comment?: string): void;
+    emptyCart(cart: CartInterface) : void;
 }
