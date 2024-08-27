@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { ProductStorageInterface } from '../../interfaces/product';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Category, Gender, Size } from '../../enums/product';
 import { PriceSliderComponent } from './price-slider/price-slider.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -27,23 +28,41 @@ export class ProductsComponent implements OnInit {
   protected products: ProductStorageInterface[];
   protected filteredProducts: ProductStorageInterface[];
 
-  constructor(private storageService: StorageService, private router: Router) {
+  private queryParamsSubscription!: Subscription;
+
+  constructor(private storageService: StorageService, private router: Router, private route: ActivatedRoute) {
     this.products = this.storageService.getAllProducts();
     this.filteredProducts = this.products;
     this.manufacturers = this.storageService.getManufacturers();
   }
 
   ngOnInit(): void {
+
+    this.queryParamsSubscription = this.route.queryParams.subscribe((params) => {
+      const search = params['search'];
+      if (search) {
+        this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.name.toLowerCase().includes(search.toLowerCase()));
+        return;
+      }
+    });
+
     const fullUrl = this.router.url;
     const lastString = fullUrl.substring(fullUrl.lastIndexOf('/') + 1);
+
     if (lastString === 'men') {
       this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.gender === Gender.MEN || product.productInfo.gender === Gender.UNISEX);
       (document.getElementById("MEN") as HTMLInputElement).checked = true;
     }
+
     else if (lastString === 'women') {
       this.filteredProducts = this.filteredProducts.filter(product => product.productInfo.gender === Gender.WOMEN || product.productInfo.gender === Gender.UNISEX);
       (document.getElementById("WOMEN") as HTMLInputElement).checked = true;
     }
+
+  }
+
+  ngOnDestroy() {
+    this.queryParamsSubscription.unsubscribe();
   }
 
   toggleFilters() {
