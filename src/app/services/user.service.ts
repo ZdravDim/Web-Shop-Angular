@@ -28,6 +28,21 @@ export class UserService implements UserServiceInterface {
   constructor(private storageService: StorageService) {
     this.currentUser = this.emptyUser;
     this.userLoggedIn = false;
+
+    this.userList.set("someuser@gmail.com", {
+      firstname: "John",
+      lastname: "Doe",
+      email: "someuser@gmail.com",
+      address: 'Some Address 123',
+      phone: '+3810123456',
+      password: '123',
+      orders: [],
+      cart: {
+        productList: [],
+        price: 0
+      },
+      createdAt: new Date()
+    });
   }
 
   protected userLoggedIn: boolean;
